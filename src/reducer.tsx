@@ -38,8 +38,8 @@ export type ContextHook = () => {
   dispatch: (action: IAction) => void;
 };
 // Selector
-// export const getBasketTotal = (basket: any) =>
-//   basket?.reduce((amount: any, item: any) => item.price + amount, 0);
+export const getBasketTotal = (basket: any) =>
+  basket?.reduce((amount: any, item: any) => item.price + amount, 0);
 
 export const reducer = (state: IState, action: IAction): IState => {
   console.log(action);
