@@ -1,9 +1,9 @@
 export interface IState {
-  user: any;
   basket: any;
+  user: any;
 }
 
-export const initialState = {
+export const initialState: IState = {
   basket: [],
   user: null,
 };
@@ -26,18 +26,22 @@ export type IAction =
     }
   | {
       type: actionTypes.REMOVE_FROM_BASKET;
-      id: any;
+      id: string;
     }
   | {
       type: actionTypes.SET_USER;
-      user: any;
+      current_user: any;
     };
 
+export type ContextHook = () => {
+  state: IState;
+  dispatch: (action: IAction) => void;
+};
 // Selector
-export const getBasketTotal = (basket: any) =>
-  basket?.reduce((amount: any, item: any) => item.price + amount, 0);
+// export const getBasketTotal = (basket: any) =>
+//   basket?.reduce((amount: any, item: any) => item.price + amount, 0);
 
-const reducer = (state: IState, action: IAction): IState => {
+export const reducer = (state: IState, action: IAction): IState => {
   console.log(action);
   switch (action.type) {
     case actionTypes.ADD_TO_BASKET:
@@ -69,7 +73,7 @@ const reducer = (state: IState, action: IAction): IState => {
     case actionTypes.SET_USER:
       return {
         ...state,
-        user: action.user,
+        user: action.current_user,
       };
     default:
       return state;
