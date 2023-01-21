@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import "./Product.css";
 import reducer, { initialState, actionTypes } from "./reducer";
-
+import { useGlobalContext } from "./StateProvider";
 interface IProductProps {
   id: string;
   title: string;
@@ -17,7 +17,7 @@ export default function Product({
   price,
   rating,
 }: IProductProps) {
-  const [{ basket }, dispatch] = useReducer(reducer, initialState);
+  const { state, dispatch } = useGlobalContext();
   const addToBasket = () => {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
@@ -30,7 +30,6 @@ export default function Product({
       },
     });
   };
-  // console.log(basket);
   return (
     <div className="product">
       <div className="product_info">
@@ -48,7 +47,7 @@ export default function Product({
         </div>
       </div>
       <img src={image} alt="" />
-      <button onClick={addToBasket}>Add to basket</button>
+      <button onClick={addToBasket}>Add to cart</button>
     </div>
   );
 }
