@@ -1,7 +1,10 @@
 import React, { useEffect, useReducer } from "react";
 import "./App.css";
 import Header from "./Header";
+import Topbar from "./Topbar";
 import Home from "./Home";
+import Products from "./Products";
+// import ProductDetails from "./ProductDetails";
 import Login from "./Login";
 import Checkout from "./Checkout";
 import { auth } from "./firebase";
@@ -35,9 +38,11 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Header />
+        <Topbar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/products" element={<Products />}></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
       </BrowserRouter>
