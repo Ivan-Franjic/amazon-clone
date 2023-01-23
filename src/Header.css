@@ -19,21 +19,25 @@
   display: flex;
   flex: 1;
   align-items: center;
-  border-radius: 24px;
 }
 
 .header__searchInput {
-  height: 12px;
+  height: 20px;
   padding: 10px;
   border: none;
+  border-radius: 5px 0 0 5px;
   width: 100%;
+  background-color: white;
+  color: black;
 }
 
 .header__searchIcon {
   padding: 5px;
-  height: 22px !important;
+  height: 30px !important;
+  width: 35px;
   background-color: #febd69;
   border: none;
+  border-radius: 0 5px 5px 0;
 }
 
 .header__optionLineOne {

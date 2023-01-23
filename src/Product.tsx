@@ -32,22 +32,21 @@ export default function Product({
   };
   return (
     <div className="product">
-      <div className="product_info">
+      <div className="product_title">
         <p>{title}</p>
-        <p className="product_price">
-          <small>$</small>
-          <strong>{price}</strong>
-        </p>
-        <div className="product_rating">
-          {Array(rating)
-            .fill(rating)
-            .map((_, i) => (
-              <p>🌟</p>
-            ))}
-        </div>
       </div>
       <img src={image} alt="" />
-      <button onClick={addToBasket}>Add to cart</button>
+      <div className="product_rating">
+        {Array(rating)
+          .fill(rating)
+          .map((_, i) => (
+            <p>🌟</p>
+          ))}
+      </div>
+      <p className="product_price">
+        <small>$</small>
+        <strong>{price}</strong>
+      </p>
     </div>
   );
 }

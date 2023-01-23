@@ -34,7 +34,7 @@ export default function Header() {
           <Link to={"/login"}>
             <div onClick={handleAuthentication} className="header__option">
               <span className="header__optionLineOne">
-                Hello {state.user.email}
+                Hello, {state.user.email}
               </span>
               <span className="header__optionLineTwo">{"Sign Out"}</span>
             </div>
@@ -42,7 +42,7 @@ export default function Header() {
         ) : (
           <Link to={"/login"}>
             <div className="header__option">
-              <span className="header__optionLineOne">Hello {"Guest"}</span>
+              <span className="header__optionLineOne">Hello, {"Guest"}</span>
               <span className="header__optionLineTwo">{"Sign In"}</span>
             </div>
           </Link>
@@ -58,7 +58,8 @@ export default function Header() {
           <div className="header__optionBasket">
             <AiOutlineShoppingCart />
             <span className="header__optionLineTwo header__basketCount">
-              {state.basket?.length}
+              {state.basket?.length} {}
+              Basket
             </span>
           </div>
         </Link>
