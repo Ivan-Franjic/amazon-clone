@@ -9,8 +9,6 @@ import React, {
 import { reducer, initialState, IState, IAction, ContextHook } from "./reducer";
 
 // Prepares the dataLayer
-// export const StateContext = createContext();
-//const StateContext = createContext<IState | any>(initialState);
 const globalContext = createContext<{
   state: IState;
   dispatch: Dispatch<IAction>;
@@ -18,11 +16,8 @@ const globalContext = createContext<{
   state: initialState,
   dispatch: () => {},
 });
-// interface StateProps {
-//   children: ReactElement;
-//   initialState: IState | any;
-//   reducer: IState | any;
-// }
+
+// Wrap our app and provide the Data layer
 export const StateProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
@@ -37,21 +32,7 @@ export const StateProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Wrap our app and provide the Data layer
-// export const StateProvider = ({
-//   children,
-//   initialState,
-//   reducer,
-// }: StateProps): ReactElement => {
-//   return (
-//     <StateContext.Provider value={useReducer(initialState, reducer)}>
-//       {children}
-//     </StateContext.Provider>
-//   );
-// };
-
 // Pull information from the data layer
-// export const useStateValue = () => useContext(StateContext);
 export const useGlobalContext: ContextHook = () => {
   const { state, dispatch } = useContext(globalContext);
   return { state, dispatch };
