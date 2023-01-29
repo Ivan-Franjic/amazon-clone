@@ -4,8 +4,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase";
-import { useGlobalContext } from "./StateProvider";
+import { auth } from "../../Common/firebase";
+import { useGlobalContext } from "../../Common/StateProvider";
 export default function Header() {
   const { state, dispatch } = useGlobalContext();
 

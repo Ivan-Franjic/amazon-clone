@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import "./Subtotal.css";
-import { useGlobalContext } from "./StateProvider";
-import { getBasketTotal } from "./reducer";
+import { useGlobalContext } from "../../Common/StateProvider";
+import { getBasketTotal } from "../../Common/reducer";
 import { useNavigate } from "react-router-dom";
 
 export default function Subtotal() {

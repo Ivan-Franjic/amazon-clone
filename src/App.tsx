@@ -1,16 +1,16 @@
 import React, { useEffect, useReducer } from "react";
 import "./App.css";
-import Header from "./Header";
-import Topbar from "./Topbar";
-import Home from "./Home";
-import Products from "./Products";
+import Header from "./Components/Header/Header";
+import Topbar from "./Components/Header/Topbar";
+import Home from "./Pages/Home";
+import Products from "./Pages/Products";
 // import ProductDetails from "./ProductDetails";
-import Login from "./Login";
-import Checkout from "./Checkout";
-import { auth } from "./firebase";
+import Login from "./Pages/Login";
+import Checkout from "./Pages/Checkout";
+import { auth } from "./Common/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reducer, { initialState, actionTypes } from "./reducer";
-import { useGlobalContext } from "./StateProvider";
+import reducer, { initialState, actionTypes } from "./Common/reducer";
+import { useGlobalContext } from "./Common/StateProvider";
 
 function App() {
   const { state, dispatch } = useGlobalContext();

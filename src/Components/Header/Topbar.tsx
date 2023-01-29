@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useContext } from "react";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "./StateProvider";
+import { useGlobalContext } from "../../Common/StateProvider";
 export default function Header() {
   const { state, dispatch } = useGlobalContext();
 

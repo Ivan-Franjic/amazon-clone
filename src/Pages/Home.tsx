@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import Category from "./Category";
+import Category from "../Components/Category/Category";
 
 export default function Home() {
   return (

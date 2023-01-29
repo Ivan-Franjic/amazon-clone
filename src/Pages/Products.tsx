@@ -1,6 +1,6 @@
 import React from "react";
 import "./Products.css";
-import Product from "./Product";
+import Product from "../Components/Product/Product";
 
 export default function Products() {
   return (

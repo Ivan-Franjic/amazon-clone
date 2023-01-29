@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from "react";
 import "./Checkout.css";
-import Subtotal from "./Subtotal";
-import reducer, { initialState, actionTypes } from "./reducer";
-import CheckoutProduct from "./CheckoutProduct";
-import { useGlobalContext } from "./StateProvider";
+import Subtotal from "../Components/Checkout/Subtotal";
+import reducer, { initialState, actionTypes } from "../Common/reducer";
+import CheckoutProduct from "../Components/Checkout/CheckoutProduct";
+import { useGlobalContext } from "../Common/StateProvider";
 
 export default function Checkout() {
   const { state, dispatch } = useGlobalContext();

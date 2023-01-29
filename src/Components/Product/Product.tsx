@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import "./Product.css";
-import reducer, { initialState, actionTypes } from "./reducer";
-import { useGlobalContext } from "./StateProvider";
+import reducer, { initialState, actionTypes } from "../../Common/reducer";
+import { useGlobalContext } from "../../Common/StateProvider";
 interface IProductProps {
   id: string;
   title: string;
