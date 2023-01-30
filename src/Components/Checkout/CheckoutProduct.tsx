@@ -2,24 +2,16 @@ import React, { useEffect, useReducer } from "react";
 import "./CheckoutProduct.css";
 import reducer, { initialState, actionTypes } from "../../Common/reducer";
 import { useGlobalContext } from "../../Common/StateProvider";
-
-interface ICheckoutProductProps {
-  id: string;
-  title: string;
-  image: string;
-  price: number;
-  rating: number;
-  hideButton: any;
-}
+import { ICheckoutProductData } from "../../Types/CheckoutProduct.type";
 
 export default function CheckoutProduct({
   id,
-  title,
+  name,
   image,
   price,
   rating,
   hideButton,
-}: ICheckoutProductProps) {
+}: ICheckoutProductData) {
   const { state, dispatch } = useGlobalContext();
 
   const removeFromBasket = () => {
@@ -35,7 +27,7 @@ export default function CheckoutProduct({
       <img className="checkoutProduct__image" src={image} />
 
       <div className="checkoutProduct__info">
-        <p className="checkoutProduct__title">{title}</p>
+        <p className="checkoutProduct__title">{name}</p>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{price}</strong>
