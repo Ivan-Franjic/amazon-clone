@@ -1,14 +1,17 @@
 export interface IState {
   basket: any;
   user: any;
+  products: any;
 }
 
 export const initialState: IState = {
   basket: [],
   user: null,
+  products: [],
 };
 
 export enum actionTypes {
+  GET_PRODUCTS = "GET_PRODUCTS",
   ADD_TO_BASKET = "ADD_TO_BASKET",
   EMPTY_BASKET = "EMPTY_BASKET",
   REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET",
@@ -16,6 +19,10 @@ export enum actionTypes {
 }
 
 export type IAction =
+  | {
+      type: actionTypes.GET_PRODUCTS;
+      item: any;
+    }
   | {
       type: actionTypes.ADD_TO_BASKET;
       item: any;
@@ -44,6 +51,11 @@ export const getBasketTotal = (basket: any) =>
 export const reducer = (state: IState, action: IAction): IState => {
   console.log(action);
   switch (action.type) {
+    case actionTypes.GET_PRODUCTS:
+      return {
+        ...state,
+        products: [state.products, action.item],
+      };
     case actionTypes.ADD_TO_BASKET:
       return {
         ...state,
