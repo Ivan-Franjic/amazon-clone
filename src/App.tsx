@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import Topbar from "./Components/Header/Topbar";
 import Home from "./Pages/Home";
 import Products from "./Pages/Products";
-// import ProductDetails from "./ProductDetails";
+import ProductDetails from "./Pages/ProductDetails";
 import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
 import { auth } from "./Common/firebase";
@@ -41,8 +41,12 @@ function App() {
         <Topbar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Products />}></Route>
           <Route path="/products" element={<Products />}></Route>
+          <Route
+            path="/productdetails/:productId"
+            element={<ProductDetails />}
+          ></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
       </BrowserRouter>

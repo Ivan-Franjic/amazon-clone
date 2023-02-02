@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Products.css";
 import Product from "../Components/Product/Product";
+import { Link } from "react-router-dom";
 import { db } from "../Common/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useGlobalContext } from "../Common/StateProvider";
@@ -10,7 +11,7 @@ export default function Products() {
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
 
-  const ProductService = async () => {
+  const getProducts = async () => {
     const productscol = collection(db, "products");
     const querySnapshot = await getDocs(productscol);
     dispatch({
@@ -29,7 +30,7 @@ export default function Products() {
   };
 
   useEffect(() => {
-    ProductService();
+    getProducts();
   }, []);
 
   return (
@@ -39,15 +40,17 @@ export default function Products() {
         <div className="products__container">
           <div className="products_row">
             {state.products[1].map((item: any) => (
-              <Product
-                id={item.id}
-                image={item.image}
-                name={item.name}
-                rating={item.rating}
-                price={item.price}
-                category={item.category}
-                description={item.description}
-              />
+              <Link to={`/productdetails/${item.id}`}>
+                <Product
+                  id={item.id}
+                  image={item.image}
+                  name={item.name}
+                  rating={item.rating}
+                  price={item.price}
+                  category={item.category}
+                  description={item.description}
+                />
+              </Link>
             ))}
           </div>
         </div>
