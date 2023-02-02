@@ -41,8 +41,8 @@ function App() {
         <Topbar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/" element={<Products />}></Route>
-          <Route path="/products" element={<Products />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/products/:categoryName" element={<Products />}></Route>
           <Route
             path="/productdetails/:productId"
             element={<ProductDetails />}
