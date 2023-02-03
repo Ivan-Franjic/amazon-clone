@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Products.css";
 import Product from "../Components/Product/Product";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../Common/firebase";
@@ -38,27 +37,25 @@ export default function Products() {
   }, []);
 
   return (
-    <div className="products">
+    <>
       {loading && <p>Loading</p>}
       {!loading && (
-        <div className="products__container">
-          <div className="products_row">
-            {state.products[1].map((item: any) => (
-              <Link to={`/productdetails/${item.id}`}>
-                <Product
-                  id={item.id}
-                  image={item.image}
-                  name={item.name}
-                  rating={item.rating}
-                  price={item.price}
-                  category={item.category}
-                  description={item.description}
-                />
-              </Link>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center space-x-5 mb-20 mt-5">
+          {state.products[1].map((item: any) => (
+            <Link to={`/productdetails/${item.id}`}>
+              <Product
+                id={item.id}
+                image={item.image}
+                name={item.name}
+                rating={item.rating}
+                price={item.price}
+                category={item.category}
+                description={item.description}
+              />
+            </Link>
+          ))}
         </div>
       )}
-    </div>
+    </>
   );
 }

@@ -1,7 +1,3 @@
-import React, { useEffect, useReducer } from "react";
-import "./Product.css";
-import reducer, { initialState, actionTypes } from "../../Common/reducer";
-import { useGlobalContext } from "../../Common/StateProvider";
 import { IProductData } from "../../Types/Product.type";
 
 export default function Product({
@@ -14,22 +10,25 @@ export default function Product({
   description,
 }: IProductData) {
   return (
-    <div className="product">
-      <div className="product_title">
-        <p>{name}</p>
+    <div className="flex flex-col w-52 h-80 bg-gray-100 border border-gray-200 shadow ">
+      <img
+        className="flex self-center w-32 h-40 mb-6"
+        src={image}
+        alt="product image"
+      />
+      <div className="px-5 pb-5">
+        <h5 className="text-md tracking-tight text-gray-900 ">{name}</h5>
+        <div className="flex">
+          {Array(rating)
+            .fill(rating)
+            .map((_, i) => (
+              <p>🌟</p>
+            ))}
+        </div>
+        <div className="flex items-center justify-between mt-6">
+          <span className="text-md font-bold text-gray-900 ">${price}</span>
+        </div>
       </div>
-      <img src={image} alt="" />
-      <div className="product_rating">
-        {Array(rating)
-          .fill(rating)
-          .map((_, i) => (
-            <p>🌟</p>
-          ))}
-      </div>
-      <p className="product_price">
-        <small>$</small>
-        <strong>{price}</strong>
-      </p>
     </div>
   );
 }
