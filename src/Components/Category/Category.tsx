@@ -1,18 +1,18 @@
-import React, { useEffect, useReducer } from "react";
-import "./Category.css";
-import reducer, { initialState, actionTypes } from "../../Common/reducer";
-import { useGlobalContext } from "../../Common/StateProvider";
 import { ICategoryData } from "../../Types/Category.type";
 
 export default function Category({ id, name, image }: ICategoryData) {
-  const { state, dispatch } = useGlobalContext();
-
   return (
-    <div className="category">
-      <div className="category_title">
-        <p>{name}</p>
+    <div className="flex flex-col w-80 h-96 bg-white border-gray-200 shadow">
+      <div className="px-5 pb-5 mt-20">
+        <h5 className="text-md font-semibold tracking-tight text-black ">
+          {name}
+        </h5>
       </div>
-      <img src={image} alt="" />
+      <img
+        className="flex self-center w-32 h-40 "
+        src={image}
+        alt="product image"
+      />
     </div>
   );
 }

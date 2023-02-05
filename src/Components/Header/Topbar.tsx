@@ -6,8 +6,8 @@ export default function Header() {
   const { state, dispatch } = useGlobalContext();
 
   return (
-    <div className="topbar">
-      <div className="topbar__nav">
+    <div className="flex items-center sticky h-9 top-14 z-50 bg-lblue">
+      <div className="flex items-center justify-evenly">
         <div className="sidemenu__toggler">
           <span></span>
           <span></span>
@@ -15,18 +15,18 @@ export default function Header() {
         </div>
         <div className="sidemenu__togglerName">All</div>
         <Link to="/free_delivery">
-          <div className="topbar__option">
-            <span className="topbar__optionLineOne">Free delivery</span>
+          <div className="flex flex-col p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+            <span className="text-base">Free delivery</span>
           </div>
         </Link>
         <Link to="/best_sellers">
-          <div className="topbar__option">
-            <span className="topbar__optionLineOne">Best sellers</span>
+          <div className="flex flex-col p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+            <span className="text-base">Best sellers</span>
           </div>
         </Link>
         <Link to="/new_releases">
-          <div className="topbar__option">
-            <span className="topbar__optionLineOne">New releases</span>
+          <div className="flex flex-col p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+            <span className="text-base">New releases</span>
           </div>
         </Link>
       </div>

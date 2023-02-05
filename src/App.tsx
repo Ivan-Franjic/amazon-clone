@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from "react";
-import "./App.css";
 import Header from "./Components/Header/Header";
 import Topbar from "./Components/Header/Topbar";
 import Home from "./Pages/Home";

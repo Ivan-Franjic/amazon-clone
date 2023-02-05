@@ -1,5 +1,3 @@
-import React, { useEffect, useReducer, useContext } from "react";
-import "./Header.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -16,48 +14,59 @@ export default function Header() {
   console.log(state.user);
 
   return (
-    <div className="header">
+    <div className="flex items-center top-0 sticky z-50 h-14 bg-blue">
       <Link to="/">
         <img
-          className="header__logo"
+          className="object-contain w-24 mt-3.5 mx-5"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
         />
       </Link>
 
-      <div className="header__search">
-        <input className="header__searchInput" type="text" />
-        <BiSearch className="header__searchIcon" />
+      <div className="flex flex-1 items-center">
+        <input
+          className="p-2.5 w-7/12 h-10 border-none rounded-l-md bg-white text-black"
+          type="text"
+          placeholder="Search Amazon"
+        />
+        <BiSearch className="p-1 w-11 h-10 border-none rounded-r-md bg-lorange cursor-pointer hover:bg-orange  " />
       </div>
 
-      <div className="header__nav">
+      <div className="flex justify-evenly">
         {state.user ? (
           <Link to={"/login"}>
-            <div onClick={handleAuthentication} className="header__option">
-              <span className="header__optionLineOne">
+            <div
+              onClick={handleAuthentication}
+              className="flex flex-col h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y"
+            >
+              <span className="text-xs leading-5 text-left">
                 Hello, {state.user.email}
               </span>
-              <span className="header__optionLineTwo">{"Sign Out"}</span>
+              <span className="text-sm font-extrabold">{"Sign Out"}</span>
             </div>
           </Link>
         ) : (
           <Link to={"/login"}>
-            <div className="header__option">
-              <span className="header__optionLineOne">Hello, {"Guest"}</span>
-              <span className="header__optionLineTwo">{"Sign In"}</span>
+            <div className="flex flex-col h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+              <span className="text-xs leading-5 text-left">
+                Hello, {"Guest"}
+              </span>
+              <span className="text-sm font-extrabold text-left">
+                {"Sign In"}
+              </span>
             </div>
           </Link>
         )}
         <Link to="/orders">
-          <div className="header__option">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
+          <div className="flex flex-col h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+            <span className="text-xs leading-5 text-left">Returns</span>
+            <span className="text-sm font-extrabold text-left">& Orders</span>
           </div>
         </Link>
 
         <Link to="/checkout">
-          <div className="header__optionBasket">
+          <div className="flex h-12 p-1 items-center text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
             <AiOutlineShoppingCart />
-            <span className="header__optionLineTwo header__basketCount">
+            <span className="text-sm font-extrabold mx-2.5">
               {state.basket?.length} {}
               Basket
             </span>
