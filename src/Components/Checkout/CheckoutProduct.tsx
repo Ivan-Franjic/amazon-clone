@@ -1,5 +1,3 @@
-import React, { useEffect, useReducer } from "react";
-import "./CheckoutProduct.css";
 import reducer, { initialState, actionTypes } from "../../Common/reducer";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { ICheckoutProductData } from "../../Types/CheckoutProduct.type";
@@ -9,7 +7,6 @@ export default function CheckoutProduct({
   name,
   image,
   price,
-  rating,
   hideButton,
 }: ICheckoutProductData) {
   const { state, dispatch } = useGlobalContext();
@@ -23,24 +20,24 @@ export default function CheckoutProduct({
   };
 
   return (
-    <div className="checkoutProduct">
-      <img className="checkoutProduct__image" src={image} />
-
-      <div className="checkoutProduct__info">
-        <p className="checkoutProduct__title">{name}</p>
+    <div className="flex my-5 border-b border-solid border-gray">
+      <img
+        className="object-contain ml-2.5 mb-5 w-44 h-44 border-b border-solid border-gray"
+        src={image}
+      />
+      <div className="ml-5">
+        <p className="flex text-lg">{name}</p>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <div className="checkoutProduct__rating">
-          {Array(rating)
-            .fill(rating)
-            .map((_, i) => (
-              <p>🌟</p>
-            ))}
-        </div>
         {hideButton && (
-          <button onClick={removeFromBasket}>Remove from Basket</button>
+          <button
+            className="mt-2.5 text-lblue bg-white border-none hover:underline"
+            onClick={removeFromBasket}
+          >
+            Remove from Basket
+          </button>
         )}
       </div>
     </div>
