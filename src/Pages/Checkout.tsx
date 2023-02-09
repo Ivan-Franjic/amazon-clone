@@ -6,8 +6,8 @@ export default function Checkout() {
   const { state, dispatch } = useGlobalContext();
 
   return (
-    <div className="flex p-5 h-screen bg-lgray">
-      <div className="flex w-4/5 h-max bg-white">
+    <div className="flex flex-col p-5 h-screen bg-lgray lg:flex lg:flex-row">
+      <div className="flex w-full h-max bg-white lg:w-4/5">
         <div>
           {state.basket.length > 0 ? (
             <h2 className="flex mr-2.5 p-5 border-b border-solid border-gray text-2xl font-medium">

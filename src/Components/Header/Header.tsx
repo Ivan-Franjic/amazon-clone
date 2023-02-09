@@ -14,10 +14,10 @@ export default function Header() {
   console.log(state.user);
 
   return (
-    <div className="flex items-center top-0 sticky z-50 h-14 bg-blue">
+    <div className="flex items-center top-0 sticky z-50 h-14 bg-lblue lg:bg-blue">
       <Link to="/">
         <img
-          className="object-contain w-24 mt-3.5 mx-5"
+          className="object-contain w-12 mt-3.5 mx-5 lg:w-24"
           src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
         />
       </Link>
@@ -57,14 +57,14 @@ export default function Header() {
           </Link>
         )}
         <Link to="/orders">
-          <div className="flex flex-col h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+          <div className="hidden h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y lg:flex lg:flex-col">
             <span className="text-xs leading-5 text-left">Returns</span>
             <span className="text-sm font-extrabold text-left">& Orders</span>
           </div>
         </Link>
 
         <Link to="/checkout">
-          <div className="flex h-12 p-1 items-center text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+          <div className="flex flex-col h-12 p-1 items-center text-white hover:border-solid hover:border-white hover:border-x hover:border-y lg:flex lg:flex-row">
             <AiOutlineShoppingCart />
             <span className="text-sm font-extrabold mx-2.5">
               {state.basket?.length} {}

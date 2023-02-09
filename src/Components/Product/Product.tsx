@@ -10,7 +10,7 @@ export default function Product({
   description,
 }: IProductData) {
   return (
-    <div className="flex flex-col w-52 h-80 bg-lgray border border-gray shadow">
+    <div className="flex flex-col w-40 h-52 bg-lgray border border-gray shadow lg:w-52 lg:h-80">
       <img
         className="flex self-center w-32 h-40 mb-6"
         src={image}

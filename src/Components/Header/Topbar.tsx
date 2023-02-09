@@ -13,26 +13,26 @@ export default function Topbar() {
 
   return (
     <div className="flex items-center sticky h-9 top-14 z-50 bg-lblue">
-      <div className="flex items-center justify-evenly">
+      <div className="flex items-center overflow-x-auto">
         <div
-          className="flex ml-5 p-1 overflow-hidden cursor-pointer text-white hover:border-solid hover:border-white hover:border-x hover:border-y"
+          className="flex ml-5 p-1 cursor-pointer text-white hover:border-solid hover:border-white hover:border-x hover:border-y"
           onClick={ToggleSidebar}
         >
-          <AiOutlineMenu className="w-full h-5 mr-1 text-white transition-all duration-300 ease-linear" />
+          <AiOutlineMenu className="w-5 h-5 mr-1 text-white transition-all duration-300 ease-linear" />
           All
         </div>
         <Link to="/free_delivery">
-          <div className="flex flex-col p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+          <div className="flex whitespace-nowrap p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
             <span className="text-base">Free delivery</span>
           </div>
         </Link>
         <Link to="/best_sellers">
-          <div className="flex flex-col p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+          <div className="flex whitespace-nowrap p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
             <span className="text-base">Best sellers</span>
           </div>
         </Link>
         <Link to="/new_releases">
-          <div className="flex flex-col p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
+          <div className="flex whitespace-nowrap p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
             <span className="text-base">New releases</span>
           </div>
         </Link>
@@ -49,7 +49,7 @@ export default function Topbar() {
           </Link>
         ) : (
           <Link to={"/login"}>
-            <div className="flex place-items-center h-14 bg-blue">
+            <div className="flex place-items-center h-14 bg-lblue lg:bg-blue">
               <span className="ml-8 text-lg font-bold text-white">
                 Hello, {"Guest"}
               </span>

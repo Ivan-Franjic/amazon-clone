@@ -5,7 +5,7 @@ export default function Subtotal() {
   const { state, dispatch } = useGlobalContext();
 
   return (
-    <div className="flex flex-col justify-between ml-5 w-full h-44 p-5 bg-white border-x border-y border-solid rounded-lg border-lgray">
+    <div className="flex flex-col justify-between h-44 p-5 bg-white border-x border-y border-solid border-lgray lg:ml-5 lg:rounded-lg">
       <>
         <p>
           Subtotal ({state.basket.length} items):{" "}

@@ -1,10 +1,9 @@
-import React, {
+import {
   createContext,
   useContext,
   Dispatch,
   ReactNode,
   useReducer,
-  ReactElement,
 } from "react";
 import { reducer, initialState, IState, IAction, ContextHook } from "./reducer";
 

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import "./Products.css";
-import Product from "../Components/Product/Product";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../Common/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
@@ -11,6 +9,7 @@ export default function ProductDetails() {
   const { productId } = useParams();
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+
   const addToBasket = () => {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
@@ -42,14 +41,26 @@ export default function ProductDetails() {
   }, []);
 
   return (
-    <div className="products">
+    <>
       {loading && <p>Loading</p>}
       {!loading && (
-        <div className="product">
-          <p>{state.productDetails.data.name}</p>
-          <button onClick={addToBasket}></button>
+        <div className="flex">
+          <img
+            className="flex w-2/4"
+            src={state.productDetails.data.image}
+            alt="product image"
+          />
+          <p className="flex w-4/12">{state.productDetails.data.name}</p>
+          <div className="flex w-2/12">
+            <button
+              className="h-10 w-fit mt-2.5 bg-lorange border-none rounded-3xl hover:bg-orange"
+              onClick={addToBasket}
+            >
+              Add to Basket
+            </button>
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

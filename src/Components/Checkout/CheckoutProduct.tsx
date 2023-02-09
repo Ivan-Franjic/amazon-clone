@@ -36,7 +36,7 @@ export default function CheckoutProduct({
             className="mt-2.5 text-lblue bg-white border-none hover:underline"
             onClick={removeFromBasket}
           >
-            Remove from Basket
+            Remove
           </button>
         )}
       </div>
