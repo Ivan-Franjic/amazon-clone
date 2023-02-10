@@ -25,6 +25,7 @@ export default function Products() {
         name: doc.data().name,
         rating: doc.data().rating,
         price: doc.data().price,
+        quantity: doc.data().quantity,
         category: doc.data().category,
         description: doc.data().description,
       })),
@@ -40,7 +41,7 @@ export default function Products() {
     <>
       {loading && <p>Loading</p>}
       {!loading && (
-        <div className="flex flex-wrap justify-center gap-5 mb-20 mt-5 lg:mx-10">
+        <div className="flex flex-wrap justify-center gap-5 mb-20 mt-5 overflow-y-auto lg:mx-10">
           {state.products[1].map((item: any) => (
             <Link to={`/productdetails/${item.id}`}>
               <Product
@@ -49,6 +50,7 @@ export default function Products() {
                 name={item.name}
                 rating={item.rating}
                 price={item.price}
+                quantity={item.quantity}
                 category={item.category}
                 description={item.description}
               />

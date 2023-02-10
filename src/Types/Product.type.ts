@@ -4,6 +4,7 @@ export interface IProductData {
   name: string;
   rating: number;
   price: number;
+  quantity: number;
   category: string;
   description: string;
 }

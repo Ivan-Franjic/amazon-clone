@@ -6,13 +6,14 @@ export default function Product({
   name,
   rating,
   price,
+  quantity,
   category,
   description,
 }: IProductData) {
   return (
     <div className="flex flex-col w-40 h-52 bg-lgray border border-gray shadow lg:w-52 lg:h-80">
       <img
-        className="flex self-center w-32 h-40 mb-6"
+        className="flex self-center w-28 h-40 mb-6 mt-2 lg:w-40 lg:mt-5"
         src={image}
         alt="product image"
       />
