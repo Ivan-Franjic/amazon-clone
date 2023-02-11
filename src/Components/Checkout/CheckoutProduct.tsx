@@ -20,24 +20,26 @@ export default function CheckoutProduct({
   };
 
   return (
-    <div className="flex my-5 border-b border-solid border-gray">
-      <img
-        className="object-contain ml-2.5 mb-5 w-44 h-44 border-b border-solid border-gray"
-        src={image}
-      />
+    <div className="flex mx-2.5 my-5 border-b border-solid border-gray">
+      <div className="w-44 h-44">
+        <img className="object-contain" src={image} />
+      </div>
       <div className="ml-5">
-        <p className="flex text-lg">{name}</p>
-        <p className="checkoutProduct__price">
-          <small>$</small>
-          <strong>{price}</strong>
-        </p>
+        <div className="flex">
+          <p className="flex text-lg truncate">{name}</p>
+          <p className="flex ml-5 text-lg">
+            <strong>${price}</strong>
+          </p>
+        </div>
         {hideButton && (
-          <button
-            className="mt-2.5 text-lblue bg-white border-none hover:underline"
-            onClick={removeFromBasket}
-          >
-            Remove
-          </button>
+          <div className="flex">
+            <a
+              className="mt-2.5 text-lblue bg-white border-none cursor-pointer hover:underline"
+              onClick={removeFromBasket}
+            >
+              Remove
+            </a>
+          </div>
         )}
       </div>
     </div>

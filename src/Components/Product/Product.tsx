@@ -12,11 +12,9 @@ export default function Product({
 }: IProductData) {
   return (
     <div className="flex flex-col w-40 h-52 bg-lgray border border-gray shadow lg:w-52 lg:h-80">
-      <img
-        className="flex self-center w-28 h-40 mb-6 mt-2 lg:w-40 lg:mt-5"
-        src={image}
-        alt="product image"
-      />
+      <div className="flex self-center w-28 h-40 mb-6 mt-2 lg:w-40 lg:mt-5">
+        <img className="object-cover" src={image} alt="product image" />
+      </div>
       <div className="px-5 pb-5">
         <h5 className="text-md tracking-tight text-black">{name}</h5>
         <div className="flex">

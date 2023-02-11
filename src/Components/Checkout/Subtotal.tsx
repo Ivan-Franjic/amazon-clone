@@ -5,12 +5,12 @@ export default function Subtotal() {
   const { state, dispatch } = useGlobalContext();
 
   return (
-    <div className="flex flex-col justify-between h-44 p-5 bg-white border-x border-y border-solid border-lgray lg:ml-5 lg:rounded-lg">
+    <div className="flex flex-col justify-between h-44 p-5 bg-white border-x border-y border-solid border-lgray lg:mx-5 lg:rounded-lg lg:w-full">
       <>
         <p>
           Subtotal ({state.basket.length} items):{" "}
           <strong>
-            {getBasketTotal(state.basket)}
+            {(Math.round(getBasketTotal(state.basket) * 100) / 100).toFixed(2)}
             {" $"}
           </strong>
         </p>
@@ -18,7 +18,7 @@ export default function Subtotal() {
           <input className="mr-1" type="checkbox" /> This order contains a gift
         </small>
       </>
-      <button className="w-full h-10 mt-2.5 text-black bg-lorange border-x border-y border-solid rounded hover:bg-orange">
+      <button className="h-10 mt-2.5 text-black bg-lorange border-x border-y border-solid rounded hover:bg-orange">
         Proceed to Checkout
       </button>
     </div>
