@@ -1,4 +1,5 @@
-import reducer, { initialState, actionTypes } from "../../Common/reducer";
+import { actionTypes } from "../../Common/reducer";
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { ICheckoutProductData } from "../../Types/CheckoutProduct.type";
 
@@ -26,7 +27,11 @@ export default function CheckoutProduct({
       </div>
       <div className="ml-5">
         <div className="flex">
-          <p className="flex text-lg truncate">{name}</p>
+          <Link to={`/productdetails/${id}`}>
+            <p className="flex text-lg text-black truncate hover:underline">
+              {name}
+            </p>
+          </Link>
           <p className="flex ml-5 text-lg">
             <strong>${price}</strong>
           </p>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Rating from "@mui/material/Rating";
 import { db } from "../Common/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useGlobalContext } from "../Common/StateProvider";
-import reducer, { initialState, actionTypes } from "../Common/reducer";
+import { actionTypes } from "../Common/reducer";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -45,9 +46,9 @@ export default function ProductDetails() {
       {loading && <p>Loading</p>}
       {!loading && (
         <div className="flex flex-col lg:flex-row">
-          <div className="flex p-1 lg:w-2/5 lg:h-2/5 lg:p-5">
+          <div className="flex p-1 lg:w-2/5 lg:h-2/5 lg:p-5 overflow-hidden">
             <img
-              className="object-cover"
+              className="object-cover hover:scale-110 ease-in duration-500"
               src={state.productDetails.data.image}
               alt="product image"
             />
@@ -55,11 +56,13 @@ export default function ProductDetails() {
           <div className="flex flex-col">
             <p className="flex p-1 lg:p-5">{state.productDetails.data.name}</p>
             <div className="flex lg:ml-5 lg:border-b lg:border-solid lg:border-gray">
-              {Array(state.productDetails.data.rating)
-                .fill(state.productDetails.data.rating)
-                .map((_, i) => (
-                  <p>🌟</p>
-                ))}
+              <Rating
+                className="lg:mb-2.5"
+                name="half-rating-read"
+                defaultValue={state.productDetails.data.rating}
+                precision={0.1}
+                readOnly
+              />
             </div>
             <p className="flex p-1 lg:p-5">
               ${state.productDetails.data.price}
@@ -104,17 +107,17 @@ export default function ProductDetails() {
                     </form>
                     <div className="flex flex-col w-full justify-center">
                       <button
-                        className="h-10 mx-2.5 mt-2.5 bg-lorange border-none rounded-3xl hover:bg-orange lg:w-48"
+                        className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
                         onClick={addToBasket}
                       >
                         Add to Basket
                       </button>
-                      <button
-                        className="h-10 mx-2.5 mt-2.5 bg-lorange border-none rounded-3xl hover:bg-orange lg:w-48"
-                        onClick={addToBasket}
+                      <Link
+                        className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
+                        to={`/checkout`}
                       >
-                        Buy now
-                      </button>
+                        <button onClick={addToBasket}>Buy now</button>
+                      </Link>
                     </div>
                   </>
                 );
@@ -137,17 +140,17 @@ export default function ProductDetails() {
                     </form>
                     <div className="flex flex-col w-full justify-center">
                       <button
-                        className="h-10 mx-2.5 mt-2.5 bg-lorange border-none rounded-3xl hover:bg-orange lg:w-48"
+                        className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
                         onClick={addToBasket}
                       >
                         Add to Basket
                       </button>
-                      <button
-                        className="h-10 mx-2.5 mt-2.5 bg-lorange border-none rounded-3xl hover:bg-orange lg:w-48"
-                        onClick={addToBasket}
+                      <Link
+                        className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
+                        to={`/checkout`}
                       >
-                        Buy now
-                      </button>
+                        <button onClick={addToBasket}>Buy now</button>
+                      </Link>
                     </div>
                   </>
                 );

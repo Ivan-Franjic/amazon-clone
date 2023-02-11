@@ -1,4 +1,5 @@
 import { IProductData } from "../../Types/Product.type";
+import Rating from "@mui/material/Rating";
 
 export default function Product({
   id,
@@ -18,11 +19,12 @@ export default function Product({
       <div className="px-5 pb-5">
         <h5 className="text-md tracking-tight text-black">{name}</h5>
         <div className="flex">
-          {Array(rating)
-            .fill(rating)
-            .map((_, i) => (
-              <p>🌟</p>
-            ))}
+          <Rating
+            name="half-rating-read"
+            defaultValue={rating}
+            precision={0.1}
+            readOnly
+          />
         </div>
         <div className="flex items-center justify-between mt-6">
           <span className="text-md font-bold text-black">${price}</span>
