@@ -35,20 +35,20 @@ export default function ProductDetails() {
 
   const getProductDetails = async () => {
     const productscol = collection(db, "products");
-    const querySnapshot = doc(productscol, productId);
-    const test = await getDoc(querySnapshot);
+    const querySnapshotDetails = doc(productscol, productId);
+    const details = await getDoc(querySnapshotDetails);
     dispatch({
       type: actionTypes.GET_PRODUCT_DETAILS,
-      item: { id: productId, data: test.data() },
+      item: { id: productId, data: details.data() },
     });
     const relatedproductscol = query(
       collection(db, "products"),
       where("category", "==", productCategory)
     );
-    const querySnapshot2 = await getDocs(relatedproductscol);
+    const querySnapshotRelated = await getDocs(relatedproductscol);
     dispatch({
       type: actionTypes.GET_RELATED_PRODUCTS,
-      item: querySnapshot2.docs.map((doc) => ({
+      item: querySnapshotRelated.docs.map((doc) => ({
         id: doc.id,
         image: doc.data().image,
         name: doc.data().name,
