@@ -3,6 +3,7 @@ export interface IState {
   user: any;
   products: any;
   productDetails: any;
+  relatedProducts: any;
 }
 
 export const initialState: IState = {
@@ -10,11 +11,13 @@ export const initialState: IState = {
   user: null,
   products: [],
   productDetails: [],
+  relatedProducts: [],
 };
 
 export enum actionTypes {
   GET_PRODUCTS = "GET_PRODUCTS",
   GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS",
+  GET_RELATED_PRODUCTS = "GET_RELATED_PRODUCTS",
   ADD_TO_BASKET = "ADD_TO_BASKET",
   EMPTY_BASKET = "EMPTY_BASKET",
   REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET",
@@ -28,6 +31,10 @@ export type IAction =
     }
   | {
       type: actionTypes.GET_PRODUCT_DETAILS;
+      item: any;
+    }
+  | {
+      type: actionTypes.GET_RELATED_PRODUCTS;
       item: any;
     }
   | {
@@ -67,6 +74,11 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         productDetails: action.item,
+      };
+    case actionTypes.GET_RELATED_PRODUCTS:
+      return {
+        ...state,
+        relatedProducts: [state.relatedProducts, action.item],
       };
     case actionTypes.ADD_TO_BASKET:
       return {
