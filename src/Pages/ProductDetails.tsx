@@ -195,21 +195,26 @@ export default function ProductDetails() {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-5 mb-20 mt-5 overflow-y-auto lg:mx-10">
-            {state.relatedProducts[1].map((item: any) => (
-              <Link to={`/productdetails/${item.category}/${item.id}`}>
-                <Product
-                  id={item.id}
-                  image={item.image}
-                  name={item.name}
-                  rating={item.rating}
-                  price={item.price}
-                  quantity={item.quantity}
-                  category={item.category}
-                  description={item.description}
-                />
-              </Link>
-            ))}
+          <div className="flex flex-col gap-5 my-10 lg:my-32">
+            <p className="flex ml-10 text-2xl font-semibold">
+              Products related to this item
+            </p>
+            <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
+              {state.relatedProducts[1].map((item: any) => (
+                <Link to={`/productdetails/${item.category}/${item.id}`}>
+                  <Product
+                    id={item.id}
+                    image={item.image}
+                    name={item.name}
+                    rating={item.rating}
+                    price={item.price}
+                    quantity={item.quantity}
+                    category={item.category}
+                    description={item.description}
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
         </>
       )}
