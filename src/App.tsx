@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import { useEffect } from "react";
 import Header from "./Components/Header/Header";
 import Topbar from "./Components/Header/Topbar";
 import Home from "./Pages/Home";
@@ -6,9 +6,12 @@ import Products from "./Pages/Products";
 import ProductDetails from "./Pages/ProductDetails";
 import Login from "./Pages/Login";
 import Checkout from "./Pages/Checkout";
+import Account from "./Pages/Account";
+import Orders from "./Pages/Orders";
+import Addresses from "./Pages/Addresses";
 import { auth } from "./Common/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reducer, { initialState, actionTypes } from "./Common/reducer";
+import { actionTypes } from "./Common/reducer";
 import { useGlobalContext } from "./Common/StateProvider";
 
 function App() {
@@ -40,6 +43,9 @@ function App() {
         <Topbar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/account" element={<Account />}></Route>
+          <Route path="/account/orders" element={<Orders />}></Route>
+          <Route path="/account/addresses" element={<Addresses />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/products/:categoryName" element={<Products />}></Route>
           <Route
