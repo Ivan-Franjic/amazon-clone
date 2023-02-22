@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Common/firebase";
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useGlobalContext } from "../../Common/StateProvider";
@@ -9,6 +11,9 @@ export default function Topbar() {
   const [isOpen, setIsopen] = useState(false);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
+  };
+  const handleAuthentication = () => {
+    signOut(auth);
   };
 
   return (
@@ -41,8 +46,8 @@ export default function Topbar() {
       <div className={`sidemenu ${isOpen == true ? "active" : ""}`}>
         {state.user ? (
           <Link to={"/myaccount"}>
-            <div className="sidemenu__option">
-              <span className="sidemenu__optionLineOne">
+            <div className="flex place-items-center h-14 bg-lblue lg:bg-blue">
+              <span className="ml-8 text-lg font-bold text-white">
                 Hello, {state.user.email}
               </span>
             </div>
@@ -72,6 +77,29 @@ export default function Topbar() {
         <span className="flex place-items-center text-lg font-bold h-14 ml-8 text-black">
           Help & Settings
         </span>
+        {state.user ? (
+          <>
+            <Link to="/account">
+              <div className="flex place-items-center h-14 hover:bg-lgray">
+                <span className="ml-8 text-black">Account</span>
+              </div>
+            </Link>
+            <Link to="/login">
+              <div
+                onClick={handleAuthentication}
+                className="flex place-items-center h-14 hover:bg-lgray"
+              >
+                <span className="ml-8 text-black">Sign Out</span>
+              </div>
+            </Link>
+          </>
+        ) : (
+          <Link to="/login">
+            <div className="flex place-items-center h-14 hover:bg-lgray">
+              <span className="ml-8 text-black">Account</span>
+            </div>
+          </Link>
+        )}
         <div className="cursor-pointer" onClick={ToggleSidebar}>
           <AiOutlineClose />
         </div>
