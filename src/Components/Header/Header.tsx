@@ -34,7 +34,7 @@ export default function Header() {
                 <span className="text-sm font-extrabold">{"Account"}</span>
               </div>
             </Link>
-            <Link to="/orders">
+            <Link to="/account/orders">
               <div className="hidden h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y lg:flex lg:flex-col">
                 <span className="text-xs leading-5 text-left">Returns</span>
                 <span className="text-sm font-extrabold text-left">
