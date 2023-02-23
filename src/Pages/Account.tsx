@@ -22,7 +22,7 @@ export default function Account() {
           </div>
         </Link>
 
-        <Link to={`/account/edit`}>
+        <Link to={`/account/login&security`}>
           <div className="flex w-28 h-10 bg-white border border-gray rounded-lg lg:w-80 lg:h-24 hover:bg-lgray">
             <img
               className="flex w-6 h-6 mx-2 mt-2 rounded-full lg:mx-5 lg:mt-5 lg:w-12 lg:h-12"
