@@ -9,6 +9,10 @@ import Checkout from "./Pages/Checkout";
 import Account from "./Pages/Account";
 import Orders from "./Pages/Orders";
 import Addresses from "./Pages/Addresses";
+import LoginSecurity from "./Pages/LoginSecurity";
+import ChangeName from "./Pages/ChangeName";
+import ChangeContact from "./Pages/ChangeContact";
+import ChangePassword from "./Pages/ChangePassword";
 import { auth } from "./Common/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { actionTypes } from "./Common/reducer";
@@ -45,6 +49,22 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/account" element={<Account />}></Route>
           <Route path="/account/orders" element={<Orders />}></Route>
+          <Route
+            path="/account/login&security"
+            element={<LoginSecurity />}
+          ></Route>
+          <Route
+            path="/account/login&security/changename"
+            element={<ChangeName />}
+          ></Route>
+          <Route
+            path="/account/login&security/changecontact"
+            element={<ChangeContact />}
+          ></Route>
+          <Route
+            path="/account/login&security/changepassword"
+            element={<ChangePassword />}
+          ></Route>
           <Route path="/account/addresses" element={<Addresses />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/products/:categoryName" element={<Products />}></Route>
