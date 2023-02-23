@@ -45,7 +45,7 @@ export default function Topbar() {
 
       <div className={`sidemenu ${isOpen == true ? "active" : ""}`}>
         {state.user ? (
-          <Link to={"/myaccount"}>
+          <Link to={"/account"}>
             <div className="flex place-items-center h-14 bg-lblue lg:bg-blue">
               <span className="ml-8 text-lg font-bold text-white">
                 Hello, {state.user.email}
