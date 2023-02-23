@@ -1,6 +1,6 @@
 export default function Order() {
   return (
-    <div className="flex flex-col w-40 h-48 bg-white border border-gray rounded-lg lg:w-3/5 lg:h-80">
+    <div className="flex flex-col w-11/12 h-48 bg-white border border-gray rounded-lg lg:w-2/4 lg:h-80">
       <div className="flex px-5 border-b gap-5 border-gray bg-lgray">
         <div className="flex flex-col text-xs tracking-tight text-dgray my-2.5 lg:text-sm">
           ORDER PLACED
