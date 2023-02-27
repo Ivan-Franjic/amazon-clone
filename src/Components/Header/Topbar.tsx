@@ -15,7 +15,7 @@ export default function Topbar() {
   const handleAuthentication = () => {
     signOut(auth);
   };
-
+  console.log(state.user);
   return (
     <div className="flex items-center sticky h-9 top-14 z-50 bg-lblue">
       <div className="flex items-center overflow-x-auto">
@@ -48,7 +48,7 @@ export default function Topbar() {
           <Link to={"/account"}>
             <div className="flex place-items-center h-14 bg-lblue lg:bg-blue">
               <span className="ml-8 text-lg font-bold text-white">
-                Hello, {state.user.email}
+                Hello, {state.user.displayName}
               </span>
             </div>
           </Link>

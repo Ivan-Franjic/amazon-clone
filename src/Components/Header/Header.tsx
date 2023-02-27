@@ -29,7 +29,7 @@ export default function Header() {
             <Link to={"/account"}>
               <div className="flex flex-col h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
                 <span className="text-xs leading-5 text-left">
-                  Hello, {state.user.email}
+                  Hello, {state.user.displayName}
                 </span>
                 <span className="text-sm font-extrabold">{"Account"}</span>
               </div>
