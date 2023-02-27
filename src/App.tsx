@@ -5,10 +5,12 @@ import Home from "./Pages/Home";
 import Products from "./Pages/Products";
 import ProductDetails from "./Pages/ProductDetails";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import Checkout from "./Pages/Checkout";
 import Account from "./Pages/Account";
 import Orders from "./Pages/Orders";
 import Addresses from "./Pages/Addresses";
+import AddAddress from "./Pages/AddAddress";
 import LoginSecurity from "./Pages/LoginSecurity";
 import ChangeName from "./Pages/ChangeName";
 import ChangeContact from "./Pages/ChangeContact";
@@ -47,6 +49,7 @@ function App() {
         <Topbar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/account" element={<Account />}></Route>
           <Route path="/account/orders" element={<Orders />}></Route>
           <Route
@@ -66,6 +69,10 @@ function App() {
             element={<ChangePassword />}
           ></Route>
           <Route path="/account/addresses" element={<Addresses />}></Route>
+          <Route
+            path="/account/addresses/addaddress"
+            element={<AddAddress />}
+          ></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/products/:categoryName" element={<Products />}></Route>
           <Route
