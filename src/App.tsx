@@ -11,6 +11,7 @@ import Account from "./Pages/Account";
 import Orders from "./Pages/Orders";
 import Addresses from "./Pages/Addresses";
 import AddAddress from "./Pages/AddAddress";
+import EditAddress from "./Pages/EditAddress";
 import LoginSecurity from "./Pages/LoginSecurity";
 import ChangeName from "./Pages/ChangeName";
 import ChangeContact from "./Pages/ChangeContact";
@@ -72,6 +73,10 @@ function App() {
           <Route
             path="/account/addresses/addaddress"
             element={<AddAddress />}
+          ></Route>
+          <Route
+            path="/account/addresses/editaddress/:addressId"
+            element={<EditAddress />}
           ></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/products/:categoryName" element={<Products />}></Route>
