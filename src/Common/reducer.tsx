@@ -4,6 +4,8 @@ export interface IState {
   products: any;
   productDetails: any;
   relatedProducts: any;
+  addresses: any;
+  addressDetails: any;
 }
 
 export const initialState: IState = {
@@ -12,12 +14,16 @@ export const initialState: IState = {
   products: [],
   productDetails: [],
   relatedProducts: [],
+  addresses: [],
+  addressDetails: [],
 };
 
 export enum actionTypes {
   GET_PRODUCTS = "GET_PRODUCTS",
   GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS",
   GET_RELATED_PRODUCTS = "GET_RELATED_PRODUCTS",
+  GET_ADDRESSES = "GET_ADDRESSES",
+  GET_ADDRESS_DETAILS = "GET_ADDRESS_DETAILS",
   ADD_TO_BASKET = "ADD_TO_BASKET",
   EMPTY_BASKET = "EMPTY_BASKET",
   REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET",
@@ -35,6 +41,14 @@ export type IAction =
     }
   | {
       type: actionTypes.GET_RELATED_PRODUCTS;
+      item: any;
+    }
+  | {
+      type: actionTypes.GET_ADDRESSES;
+      item: any;
+    }
+  | {
+      type: actionTypes.GET_ADDRESS_DETAILS;
       item: any;
     }
   | {
@@ -58,7 +72,7 @@ export type ContextHook = () => {
   state: IState;
   dispatch: (action: IAction) => void;
 };
-// Selector
+
 export const getBasketTotal = (basket: any) =>
   basket?.reduce((amount: any, item: any) => item.price + amount, 0);
 
@@ -79,6 +93,16 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         relatedProducts: [state.relatedProducts, action.item],
+      };
+    case actionTypes.GET_ADDRESSES:
+      return {
+        ...state,
+        addresses: [state.addresses, action.item],
+      };
+    case actionTypes.GET_ADDRESS_DETAILS:
+      return {
+        ...state,
+        addressDetails: action.item,
       };
     case actionTypes.ADD_TO_BASKET:
       return {
