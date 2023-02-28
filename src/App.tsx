@@ -13,9 +13,10 @@ import Addresses from "./Pages/Addresses";
 import AddAddress from "./Pages/AddAddress";
 import EditAddress from "./Pages/EditAddress";
 import LoginSecurity from "./Pages/LoginSecurity";
-import ChangeName from "./Pages/ChangeName";
-import ChangeContact from "./Pages/ChangeContact";
-import ChangePassword from "./Pages/ChangePassword";
+import EditName from "./Pages/EditName";
+import EditContact from "./Pages/EditContact";
+import EditEmail from "./Pages/EditEmail";
+import EditPassword from "./Pages/EditPassword";
 import { auth } from "./Common/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { actionTypes } from "./Common/reducer";
@@ -58,16 +59,20 @@ function App() {
             element={<LoginSecurity />}
           ></Route>
           <Route
-            path="/account/login&security/changename"
-            element={<ChangeName />}
+            path="/account/login&security/editname"
+            element={<EditName />}
           ></Route>
           <Route
-            path="/account/login&security/changecontact"
-            element={<ChangeContact />}
+            path="/account/login&security/editcontact"
+            element={<EditContact />}
           ></Route>
           <Route
-            path="/account/login&security/changepassword"
-            element={<ChangePassword />}
+            path="/account/login&security/editemail"
+            element={<EditEmail />}
+          ></Route>
+          <Route
+            path="/account/login&security/editpassword"
+            element={<EditPassword />}
           ></Route>
           <Route path="/account/addresses" element={<Addresses />}></Route>
           <Route
