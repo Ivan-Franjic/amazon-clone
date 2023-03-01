@@ -15,12 +15,15 @@ export default function ConfirmOrder() {
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
     let currentDate = date + "/" + month + "/" + year;
+    let total = (Math.round(getBasketTotal(state.basket) * 100) / 100).toFixed(
+      2
+    );
 
     await addDoc(collection(db, "orders"), {
-      address: "test",
       items: state.basket,
       order_date: currentDate,
       user_id: state.user.uid,
+      total: total,
     });
     navigate("/account/orders");
   };
