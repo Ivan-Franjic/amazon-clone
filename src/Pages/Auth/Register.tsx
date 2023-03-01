@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
-import { auth } from "../Common/firebase";
-
-export default function Login() {
+import { auth } from "../../Common/firebase";
+export default function Register() {
   const navigate = useNavigate();
+  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const signIn = (e: any) => {
+  const register = async (e: any) => {
     e.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error: Error) => alert(error.message));
+    await createUserWithEmailAndPassword(auth, email, password);
+    updateProfile(auth.currentUser!, {
+      displayName: name,
+    });
+    if (auth) {
+      navigate("/");
+    } else {
+      alert("error");
+    }
   };
-
   return (
     <div className="flex flex-col items-center h-screen bg-white">
       <Link to="/">
@@ -31,9 +34,16 @@ export default function Login() {
       </Link>
 
       <div className="flex flex-col h-fit w-72 p-5 border-x border-y border-solid rounded border-gray">
-        <h1 className="mb-5 font-medium">Sign-in</h1>
+        <h1 className="mb-5 font-medium">Register</h1>
 
         <form>
+          <h5 className="mb-1">Name</h5>
+          <input
+            className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <h5 className="mb-1">E-mail</h5>
           <input
             className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
@@ -51,22 +61,24 @@ export default function Login() {
           />
 
           <button
-            className="h-12 w-full mt-2.5 bg-lorange rounded hover:bg-orange"
-            type="submit"
-            onClick={signIn}
+            onClick={register}
+            className="h-12 w-full mt-2.5 bg-black text-sm text-white rounded hover:bg-dgray"
           >
-            Sign In
+            Create your Amazon Account
           </button>
         </form>
 
         <p className="mt-3.5 text-xs">
-          By signing-in you agree to the AMAZON CLONE Conditions of Use & Sale.
+          By registering you agree to the AMAZON CLONE Conditions of Use & Sale.
           Please see our Privacy Notice, our Cookies Notice and our
           Interest-Based Ads Notice.
         </p>
-        <Link to={"/register"}>
-          <button className="h-12 w-full mt-2.5 bg-black text-sm text-white rounded hover:bg-dgray">
-            Create your Amazon Account
+        <Link to={"/login"}>
+          <button
+            className="h-12 w-full mt-2.5 bg-lorange rounded hover:bg-orange"
+            type="submit"
+          >
+            Sign In
           </button>
         </Link>
       </div>

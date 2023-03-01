@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updatePassword } from "firebase/auth";
-import { auth } from "../Common/firebase";
+import { auth } from "../../Common/firebase";
 
 export default function EditPassword() {
   const navigate = useNavigate();

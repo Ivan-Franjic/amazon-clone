@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { db } from "../Common/firebase";
+import { db } from "../../../Common/firebase";
 import { collection, doc, deleteDoc } from "firebase/firestore";
 export default function DeleteAddress() {
   const navigate = useNavigate();

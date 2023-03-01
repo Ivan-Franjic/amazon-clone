@@ -1,4 +1,4 @@
-import Order from "../Components/Order/Order";
+import Order from "../../Components/Order/Order";
 export default function Orders() {
   return (
     <div className="flex flex-col items-center my-10 gap-4">

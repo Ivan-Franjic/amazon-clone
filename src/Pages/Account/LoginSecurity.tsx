@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../Common/StateProvider";
+import { useGlobalContext } from "../../Common/StateProvider";
 
 export default function LoginSecurity() {
   const { state, dispatch } = useGlobalContext();

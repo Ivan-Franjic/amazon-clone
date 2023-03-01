@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { db } from "../Common/firebase";
+import { db } from "../../../Common/firebase";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
-import { useGlobalContext } from "../Common/StateProvider";
-import { actionTypes } from "../Common/reducer";
+import { useGlobalContext } from "../../../Common/StateProvider";
+import { actionTypes } from "../../../Common/reducer";
 export default function EditAddress() {
   const navigate = useNavigate();
   const { addressId } = useParams();

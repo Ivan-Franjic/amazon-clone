@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Address from "../Components/Address/Address";
-import AddAddress from "../Components/Address/AddAddress";
+import Address from "../../../Components/Address/Address";
+import AddAddress from "../../../Components/Address/AddAddress";
 import { Link } from "react-router-dom";
-import { db } from "../Common/firebase";
+import { db } from "../../../Common/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useGlobalContext } from "../Common/StateProvider";
-import { actionTypes } from "../Common/reducer";
+import { useGlobalContext } from "../../../Common/StateProvider";
+import { actionTypes } from "../../../Common/reducer";
 
 export default function Addresses() {
   const { state, dispatch } = useGlobalContext();

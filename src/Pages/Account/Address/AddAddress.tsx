@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../Common/firebase";
+import { db } from "../../../Common/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { useGlobalContext } from "../Common/StateProvider";
+import { useGlobalContext } from "../../../Common/StateProvider";
 export default function AddAddress() {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
