@@ -1,7 +1,7 @@
 import { actionTypes } from "../../Common/reducer";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
-import { ICheckoutProductData } from "../../Types/CheckoutProduct.type";
+import { IBasketProductData } from "../../Types/BasketProduct.type";
 
 export default function CheckoutProduct({
   id,
@@ -9,7 +9,7 @@ export default function CheckoutProduct({
   image,
   price,
   hideButton,
-}: ICheckoutProductData) {
+}: IBasketProductData) {
   const { state, dispatch } = useGlobalContext();
 
   const removeFromBasket = () => {

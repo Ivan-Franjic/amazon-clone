@@ -66,7 +66,7 @@ export default function Header() {
           </>
         )}
 
-        <Link to="/checkout">
+        <Link to="/basket">
           <div className="flex flex-col h-12 p-1 items-center text-white hover:border-solid hover:border-white hover:border-x hover:border-y lg:flex lg:flex-row">
             <AiOutlineShoppingCart />
             <span className="text-sm font-extrabold mx-2.5">

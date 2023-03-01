@@ -6,7 +6,7 @@ import Products from "./Pages/Products";
 import ProductDetails from "./Pages/ProductDetails";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import Checkout from "./Pages/Checkout";
+import Basket from "./Pages/Basket";
 import Account from "./Pages/Account";
 import Orders from "./Pages/Orders";
 import Addresses from "./Pages/Addresses";
@@ -91,7 +91,7 @@ function App() {
             path="/productdetails/:productCategory/:productId"
             element={<ProductDetails />}
           ></Route>
-          <Route path="/checkout" element={<Checkout />}></Route>
+          <Route path="/basket" element={<Basket />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

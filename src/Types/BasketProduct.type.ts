@@ -1,4 +1,4 @@
-export interface ICheckoutProductData {
+export interface IBasketProductData {
   id: string;
   name: string;
   image: string;

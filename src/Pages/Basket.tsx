@@ -1,5 +1,5 @@
 import Subtotal from "../Components/Checkout/Subtotal";
-import CheckoutProduct from "../Components/Checkout/CheckoutProduct";
+import BasketProduct from "../Components/Checkout/BasketProduct";
 import { useGlobalContext } from "../Common/StateProvider";
 
 export default function Checkout() {
@@ -20,7 +20,7 @@ export default function Checkout() {
           )}
 
           {state.basket.map((item: any) => (
-            <CheckoutProduct
+            <BasketProduct
               id={item.id}
               name={item.name}
               image={item.image}
