@@ -1,5 +1,6 @@
 import { useGlobalContext } from "../../Common/StateProvider";
 import { getBasketTotal } from "../../Common/reducer";
+import { Link } from "react-router-dom";
 
 export default function Subtotal() {
   const { state, dispatch } = useGlobalContext();
@@ -18,9 +19,11 @@ export default function Subtotal() {
           <input className="mr-1" type="checkbox" /> This order contains a gift
         </small>
       </>
-      <button className="h-10 mt-2.5 text-black bg-lorange border-x border-y border-solid rounded hover:bg-orange">
-        Proceed to Checkout
-      </button>
+      <Link to={"/checkout"}>
+        <button className="h-10 mt-2.5 text-black bg-lorange border-x border-y border-solid rounded hover:bg-orange">
+          Proceed to Checkout
+        </button>
+      </Link>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import ProductDetails from "./Pages/ProductDetails";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import Basket from "./Pages/Basket";
+import Checkout from "./Pages/Checkout";
 import Account from "./Pages/Account/Account";
 import Orders from "./Pages/Account/Orders";
 import Addresses from "./Pages/Account/Address/Addresses";
@@ -92,6 +93,7 @@ function App() {
             element={<ProductDetails />}
           ></Route>
           <Route path="/basket" element={<Basket />}></Route>
+          <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
