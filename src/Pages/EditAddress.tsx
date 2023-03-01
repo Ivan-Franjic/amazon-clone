@@ -42,7 +42,7 @@ export default function EditAddress() {
     e.preventDefault();
     const addressescol = collection(db, "addresses");
     const querySnapshotDetails = doc(addressescol, addressId);
-    const details = await updateDoc(querySnapshotDetails, {
+    await updateDoc(querySnapshotDetails, {
       name: formData.name,
       street: formData.street,
       city: formData.city,
