@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { IBasketProductData } from "../../Types/BasketProduct.type";
 
-export default function CheckoutProduct({
+export default function BasketProduct({
   id,
   name,
   image,

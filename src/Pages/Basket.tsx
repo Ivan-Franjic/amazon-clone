@@ -2,7 +2,7 @@ import Subtotal from "../Components/Checkout/Subtotal";
 import BasketProduct from "../Components/Checkout/BasketProduct";
 import { useGlobalContext } from "../Common/StateProvider";
 
-export default function Checkout() {
+export default function Basket() {
   const { state, dispatch } = useGlobalContext();
 
   return (
