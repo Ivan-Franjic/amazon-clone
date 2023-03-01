@@ -12,6 +12,7 @@ import Orders from "./Pages/Orders";
 import Addresses from "./Pages/Addresses";
 import AddAddress from "./Pages/AddAddress";
 import EditAddress from "./Pages/EditAddress";
+import DeleteAddress from "./Pages/DeleteAddress";
 import LoginSecurity from "./Pages/LoginSecurity";
 import EditName from "./Pages/EditName";
 import EditContact from "./Pages/EditContact";
@@ -26,11 +27,8 @@ function App() {
   const { state, dispatch } = useGlobalContext();
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("THE USER IS >>> ", authUser);
-
       if (authUser) {
         // the user just logged in / the user was logged in
-
         dispatch({
           type: actionTypes.SET_USER,
           current_user: authUser,
@@ -82,6 +80,10 @@ function App() {
           <Route
             path="/account/addresses/editaddress/:addressId"
             element={<EditAddress />}
+          ></Route>
+          <Route
+            path="/account/addresses/deleteaddress/:addressId"
+            element={<DeleteAddress />}
           ></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/products/:categoryName" element={<Products />}></Route>
