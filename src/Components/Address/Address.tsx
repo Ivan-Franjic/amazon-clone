@@ -40,12 +40,12 @@ export default function Address({
           Edit
         </Link>
         <p className="flex border-r-2 h-4"></p>
-        <a
+        <Link
+          to={`/account/addresses/deleteaddress/${id}`}
           className="flex text-xs tracking-tight text-lblue mb-2.5 lg:text-sm hover:underline hover:text-red"
-          href=""
         >
           Remove
-        </a>
+        </Link>
       </div>
     </div>
   );
