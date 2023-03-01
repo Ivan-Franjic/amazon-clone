@@ -6,6 +6,7 @@ export interface IState {
   relatedProducts: any;
   addresses: any;
   addressDetails: any;
+  orders: any;
 }
 
 export const initialState: IState = {
@@ -16,6 +17,7 @@ export const initialState: IState = {
   relatedProducts: [],
   addresses: [],
   addressDetails: [],
+  orders: [],
 };
 
 export enum actionTypes {
@@ -27,6 +29,7 @@ export enum actionTypes {
   ADD_TO_BASKET = "ADD_TO_BASKET",
   EMPTY_BASKET = "EMPTY_BASKET",
   REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET",
+  GET_ORDERS = "GET_ORDERS",
   SET_USER = "SET_USER",
 }
 
@@ -62,6 +65,10 @@ export type IAction =
   | {
       type: actionTypes.REMOVE_FROM_BASKET;
       id: string;
+    }
+  | {
+      type: actionTypes.GET_ORDERS;
+      item: any;
     }
   | {
       type: actionTypes.SET_USER;
@@ -129,6 +136,11 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         basket: newBasket,
+      };
+    case actionTypes.GET_ORDERS:
+      return {
+        ...state,
+        orders: [state.orders, action.item],
       };
     case actionTypes.SET_USER:
       return {
