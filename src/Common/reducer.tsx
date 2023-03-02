@@ -1,6 +1,5 @@
 export interface IState {
   basket: any;
-  user: any;
   products: any;
   productDetails: any;
   relatedProducts: any;
@@ -11,7 +10,6 @@ export interface IState {
 
 export const initialState: IState = {
   basket: [],
-  user: null,
   products: [],
   productDetails: [],
   relatedProducts: [],
@@ -30,7 +28,6 @@ export enum actionTypes {
   EMPTY_BASKET = "EMPTY_BASKET",
   REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET",
   GET_ORDERS = "GET_ORDERS",
-  SET_USER = "SET_USER",
 }
 
 export type IAction =
@@ -69,10 +66,6 @@ export type IAction =
   | {
       type: actionTypes.GET_ORDERS;
       item: any;
-    }
-  | {
-      type: actionTypes.SET_USER;
-      current_user: any;
     };
 
 export type ContextHook = () => {
@@ -141,11 +134,6 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         orders: [state.orders, action.item],
-      };
-    case actionTypes.SET_USER:
-      return {
-        ...state,
-        user: action.current_user,
       };
     default:
       return state;
