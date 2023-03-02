@@ -39,13 +39,11 @@ function App() {
         sessionStorage.setItem("currentUserEmail", authUser.email!);
         sessionStorage.setItem("currentUserDisplayName", authUser.displayName!);
       } else {
+        // the user is logged out
         dispatch({
           type: actionTypes.SET_USER,
           current_user: null,
         });
-        sessionStorage.clear();
-        // the user is logged out
-        // the user is logged out
         sessionStorage.clear();
       }
     });
