@@ -43,7 +43,10 @@ export default function Products() {
       {!loading && (
         <div className="flex flex-wrap justify-center gap-5 mb-20 mt-5 overflow-y-auto lg:mx-10">
           {state.products[1].map((item: any) => (
-            <Link to={`/productdetails/${item.category}/${item.id}`}>
+            <Link
+              to={`/productdetails/${item.category}/${item.id}`}
+              key={item.id}
+            >
               <Product
                 id={item.id}
                 image={item.image}

@@ -40,6 +40,7 @@ export default function Orders() {
           <p className="flex lg:py-5 lg:text-3xl">Your Orders</p>
           {state.orders[1].map((item: any) => (
             <Order
+              key={item.id}
               id={item.id}
               items={item.items}
               order_date={item.order_date}

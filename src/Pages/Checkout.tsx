@@ -13,6 +13,7 @@ export default function Checkout() {
 
           {state.basket.map((item: any) => (
             <CheckoutProduct
+              key={item.id}
               id={item.id}
               name={item.name}
               image={item.image}

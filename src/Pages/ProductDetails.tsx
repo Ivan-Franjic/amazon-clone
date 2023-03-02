@@ -201,7 +201,10 @@ export default function ProductDetails() {
             </p>
             <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
               {state.relatedProducts[1].map((item: any) => (
-                <Link to={`/productdetails/${item.category}/${item.id}`}>
+                <Link
+                  to={`/productdetails/${item.category}/${item.id}`}
+                  key={item.id}
+                >
                   <Product
                     id={item.id}
                     image={item.image}

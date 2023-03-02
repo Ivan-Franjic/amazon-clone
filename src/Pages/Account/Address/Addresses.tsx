@@ -49,6 +49,7 @@ export default function Addresses() {
             </Link>
             {state.addresses[1].map((item: any) => (
               <Address
+                key={item.id}
                 id={item.id}
                 name={item.name}
                 street={item.street}

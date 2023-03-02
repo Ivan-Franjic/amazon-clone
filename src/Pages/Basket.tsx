@@ -21,6 +21,7 @@ export default function Basket() {
 
           {state.basket.map((item: any) => (
             <BasketProduct
+              key={item.id}
               id={item.id}
               name={item.name}
               image={item.image}
