@@ -5,11 +5,10 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../Common/firebase";
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useGlobalContext } from "../../Common/StateProvider";
+
 export default function Topbar() {
-  const currentUserId = sessionStorage.getItem("currentUserId");
-  const currentUserDisplayName = sessionStorage.getItem(
-    "currentUserDisplayName"
-  );
+  const { state, dispatch } = useGlobalContext();
   const [isOpen, setIsopen] = useState(false);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
@@ -46,11 +45,11 @@ export default function Topbar() {
       </div>
 
       <div className={`sidemenu ${isOpen == true ? "active" : ""}`}>
-        {currentUserId ? (
+        {state.user ? (
           <Link to={"/account"}>
             <div className="flex place-items-center h-14 bg-lblue lg:bg-blue">
               <span className="ml-8 text-lg font-bold text-white">
-                Hello, {currentUserDisplayName}
+                Hello, {state.user.displayName}
               </span>
             </div>
           </Link>
@@ -79,7 +78,7 @@ export default function Topbar() {
         <span className="flex place-items-center text-lg font-bold h-14 ml-8 text-black">
           Help & Settings
         </span>
-        {currentUserId ? (
+        {state.user ? (
           <>
             <Link to="/account">
               <div className="flex place-items-center h-14 hover:bg-lgray">

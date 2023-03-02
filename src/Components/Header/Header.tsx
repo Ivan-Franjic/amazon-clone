@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
 export default function Header() {
   const { state, dispatch } = useGlobalContext();
-  const currentUserId = sessionStorage.getItem("currentUserId");
-  const currentUserDisplayName = sessionStorage.getItem(
-    "currentUserDisplayName"
-  );
 
   return (
     <div className="flex items-center top-0 sticky z-50 h-14 bg-lblue lg:bg-blue">
@@ -28,12 +24,12 @@ export default function Header() {
       </div>
 
       <div className="flex justify-evenly">
-        {currentUserId ? (
+        {state.user ? (
           <>
             <Link to={"/account"}>
               <div className="flex flex-col h-12 p-1 mx-2.5 text-white hover:border-solid hover:border-white hover:border-x hover:border-y">
                 <span className="text-xs leading-5 text-left">
-                  Hello, {currentUserDisplayName}
+                  Hello, {state.user.displayName}
                 </span>
                 <span className="text-sm font-extrabold">{"Account"}</span>
               </div>
