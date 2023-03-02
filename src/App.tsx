@@ -16,7 +16,6 @@ import EditAddress from "./Pages/Account/Address/EditAddress";
 import DeleteAddress from "./Pages/Account/Address/DeleteAddress";
 import LoginSecurity from "./Pages/Account/LoginSecurity";
 import EditName from "./Pages/Account/EditName";
-import EditContact from "./Pages/EditContact";
 import EditEmail from "./Pages/Account/EditEmail";
 import EditPassword from "./Pages/Account/EditPassword";
 import { auth } from "./Common/firebase";
@@ -66,10 +65,6 @@ function App() {
           <Route
             path="/account/login&security/editname"
             element={<EditName />}
-          ></Route>
-          <Route
-            path="/account/login&security/editcontact"
-            element={<EditContact />}
           ></Route>
           <Route
             path="/account/login&security/editemail"
