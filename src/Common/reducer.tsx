@@ -135,7 +135,7 @@ export const reducer = (state: IState, action: IAction): IState => {
         newBasket.splice(index, 1);
       } else {
         console.warn(
-          `Cant remove product (id: ${action.id}) as its not in basket!`
+          `Can't remove product (id: ${action.id}) as it's not in the basket!`
         );
       }
       return {
