@@ -1,6 +1,6 @@
 export interface IState {
-  basket: any;
   user: any;
+  basket: any;
   products: any;
   productDetails: any;
   relatedProducts: any;
@@ -10,8 +10,8 @@ export interface IState {
 }
 
 export const initialState: IState = {
-  basket: [],
   user: null,
+  basket: [],
   products: [],
   productDetails: [],
   relatedProducts: [],
@@ -21,6 +21,7 @@ export const initialState: IState = {
 };
 
 export enum actionTypes {
+  SET_USER = "SET_USER",
   GET_PRODUCTS = "GET_PRODUCTS",
   GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS",
   GET_RELATED_PRODUCTS = "GET_RELATED_PRODUCTS",
@@ -30,10 +31,13 @@ export enum actionTypes {
   EMPTY_BASKET = "EMPTY_BASKET",
   REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET",
   GET_ORDERS = "GET_ORDERS",
-  SET_USER = "SET_USER",
 }
 
 export type IAction =
+  | {
+      type: actionTypes.SET_USER;
+      current_user: any;
+    }
   | {
       type: actionTypes.GET_PRODUCTS;
       item: any;
@@ -69,10 +73,6 @@ export type IAction =
   | {
       type: actionTypes.GET_ORDERS;
       item: any;
-    }
-  | {
-      type: actionTypes.SET_USER;
-      current_user: any;
     };
 
 export type ContextHook = () => {
@@ -86,6 +86,11 @@ export const getBasketTotal = (basket: any) =>
 export const reducer = (state: IState, action: IAction): IState => {
   console.log(action);
   switch (action.type) {
+    case actionTypes.SET_USER:
+      return {
+        ...state,
+        user: action.current_user,
+      };
     case actionTypes.GET_PRODUCTS:
       return {
         ...state,
@@ -141,11 +146,6 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         orders: [state.orders, action.item],
-      };
-    case actionTypes.SET_USER:
-      return {
-        ...state,
-        user: action.current_user,
       };
     default:
       return state;

@@ -45,9 +45,12 @@ function App() {
         });
         sessionStorage.clear();
         // the user is logged out
+        // the user is logged out
+        sessionStorage.clear();
       }
     });
   }, []);
+
   return (
     <div className="app">
       <BrowserRouter>
