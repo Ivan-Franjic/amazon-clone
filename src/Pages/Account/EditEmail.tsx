@@ -7,6 +7,7 @@ import { useGlobalContext } from "../../Common/StateProvider";
 export default function EditEmail() {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
+  const currentUserEmail = sessionStorage.getItem("currentUserEmail")!;
   const [formData, setFormData] = useState({
     email: "",
   });
@@ -46,7 +47,7 @@ export default function EditEmail() {
             <input
               name="email"
               type="email"
-              defaultValue={state.user.email}
+              defaultValue={currentUserEmail}
               onChange={onChange}
               className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
               required

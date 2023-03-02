@@ -14,8 +14,8 @@ export default function Topbar() {
   };
   const handleAuthentication = () => {
     signOut(auth);
+    sessionStorage.clear();
   };
-  console.log(state.user);
   return (
     <div className="flex items-center sticky h-9 top-14 z-50 bg-lblue">
       <div className="flex items-center overflow-x-auto">

@@ -3,6 +3,10 @@ import { useGlobalContext } from "../../Common/StateProvider";
 
 export default function LoginSecurity() {
   const { state, dispatch } = useGlobalContext();
+  const currentUserEmail = sessionStorage.getItem("currentUserEmail");
+  const currentUserDisplayName = sessionStorage.getItem(
+    "currentUserDisplayName"
+  );
 
   return (
     <div className="flex flex-col items-center mt-20">
@@ -16,7 +20,7 @@ export default function LoginSecurity() {
               Name:
             </p>
             <p className="flex text-xs tracking-tight text-black mb-2.5 lg:text-sm">
-              {state.user.displayName}
+              {currentUserDisplayName}
             </p>
           </div>
           <Link to={"/account/login&security/editname"}>
@@ -31,7 +35,7 @@ export default function LoginSecurity() {
               Email:
             </p>
             <p className="flex text-xs tracking-tight text-black mb-2.5 lg:text-sm">
-              {state.user.email}
+              {currentUserEmail}
             </p>
           </div>
           <Link to={"/account/login&security/editemail"}>

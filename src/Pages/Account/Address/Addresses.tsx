@@ -10,11 +10,11 @@ import { actionTypes } from "../../../Common/reducer";
 export default function Addresses() {
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
-
+  const currentUserId = sessionStorage.getItem("currentUserId");
   const getAddresses = async () => {
     const addressescol = query(
       collection(db, "addresses"),
-      where("user_id", "==", state.user.uid)
+      where("user_id", "==", currentUserId)
     );
     const querySnapshot = await getDocs(addressescol);
     dispatch({

@@ -7,11 +7,15 @@ import { useGlobalContext } from "../../Common/StateProvider";
 export default function Orders() {
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const currentUserId = sessionStorage.getItem("currentUserId");
+  const currentUserDisplayName = sessionStorage.getItem(
+    "currentUserDisplayName"
+  );
 
   const getOrders = async () => {
     const orderscol = query(
       collection(db, "orders"),
-      where("user_id", "==", state.user.uid)
+      where("user_id", "==", currentUserId)
     );
     const querySnapshot = await getDocs(orderscol);
     dispatch({
@@ -22,7 +26,7 @@ export default function Orders() {
         order_date: doc.data().order_date,
         total: doc.data().total,
         user_id: doc.data().user_id,
-        name: state.user.displayName,
+        name: currentUserDisplayName,
       })),
     });
     setLoading(false);

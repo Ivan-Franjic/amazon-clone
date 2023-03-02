@@ -26,6 +26,7 @@ import { useGlobalContext } from "./Common/StateProvider";
 
 function App() {
   const { state, dispatch } = useGlobalContext();
+
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -34,6 +35,9 @@ function App() {
           type: actionTypes.SET_USER,
           current_user: authUser,
         });
+        sessionStorage.setItem("currentUserId", authUser.uid);
+        sessionStorage.setItem("currentUserEmail", authUser.email!);
+        sessionStorage.setItem("currentUserDisplayName", authUser.displayName!);
       } else {
         // the user is logged out
         dispatch({

@@ -7,6 +7,9 @@ import { useGlobalContext } from "../../Common/StateProvider";
 export default function EditName() {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
+  const currentUserDisplayName = sessionStorage.getItem(
+    "currentUserDisplayName"
+  )!;
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -48,7 +51,7 @@ export default function EditName() {
             <input
               name="name"
               type="text"
-              defaultValue={state.user.displayName}
+              defaultValue={currentUserDisplayName}
               onChange={onChange}
               className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
               required
