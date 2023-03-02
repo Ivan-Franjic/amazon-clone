@@ -2,11 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../Common/firebase";
-import { useGlobalContext } from "../../Common/StateProvider";
 
 export default function EditName() {
   const navigate = useNavigate();
-  const { state, dispatch } = useGlobalContext();
   const currentUserDisplayName = sessionStorage.getItem(
     "currentUserDisplayName"
   )!;

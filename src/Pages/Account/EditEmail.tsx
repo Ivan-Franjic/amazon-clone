@@ -2,11 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateEmail } from "firebase/auth";
 import { auth } from "../../Common/firebase";
-import { useGlobalContext } from "../../Common/StateProvider";
 
 export default function EditEmail() {
   const navigate = useNavigate();
-  const { state, dispatch } = useGlobalContext();
   const currentUserEmail = sessionStorage.getItem("currentUserEmail")!;
   const [formData, setFormData] = useState({
     email: "",

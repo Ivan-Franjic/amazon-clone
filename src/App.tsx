@@ -21,32 +21,22 @@ import EditEmail from "./Pages/Account/EditEmail";
 import EditPassword from "./Pages/Account/EditPassword";
 import { auth } from "./Common/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { actionTypes } from "./Common/reducer";
-import { useGlobalContext } from "./Common/StateProvider";
 
 function App() {
-  const { state, dispatch } = useGlobalContext();
-
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // the user just logged in / the user was logged in
-        dispatch({
-          type: actionTypes.SET_USER,
-          current_user: authUser,
-        });
         sessionStorage.setItem("currentUserId", authUser.uid);
         sessionStorage.setItem("currentUserEmail", authUser.email!);
         sessionStorage.setItem("currentUserDisplayName", authUser.displayName!);
       } else {
         // the user is logged out
-        dispatch({
-          type: actionTypes.SET_USER,
-          current_user: null,
-        });
+        sessionStorage.clear();
       }
     });
   }, []);
+
   return (
     <div className="app">
       <BrowserRouter>
