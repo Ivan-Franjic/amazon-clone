@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "./Components/Header/Header";
 import Topbar from "./Components/Header/Topbar";
+import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Products from "./Pages/Products";
 import ProductDetails from "./Pages/ProductDetails";
@@ -96,6 +97,7 @@ function App() {
           <Route path="/basket" element={<Basket />}></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
