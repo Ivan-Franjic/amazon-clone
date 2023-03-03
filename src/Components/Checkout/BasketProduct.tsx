@@ -8,6 +8,7 @@ export default function BasketProduct({
   name,
   image,
   price,
+  category,
   hideButton,
 }: IBasketProductData) {
   const { state, dispatch } = useGlobalContext();
@@ -27,7 +28,7 @@ export default function BasketProduct({
       </div>
       <div className="ml-5">
         <div className="flex">
-          <Link to={`/productdetails/${id}`}>
+          <Link to={`/productdetails/${category}/${id}`}>
             <p className="flex text-lg text-black truncate hover:underline">
               {name}
             </p>

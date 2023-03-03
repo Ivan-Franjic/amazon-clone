@@ -29,6 +29,7 @@ export default function ProductDetails() {
         price: state.productDetails.data.price,
         rating: state.productDetails.data.rating,
         description: state.productDetails.data.description,
+        category: state.productDetails.data.category,
       },
     });
   };

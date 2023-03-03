@@ -27,6 +27,7 @@ export default function Basket() {
               image={item.image}
               price={item.price}
               rating={item.rating}
+              category={item.category}
               hideButton
             />
           ))}
