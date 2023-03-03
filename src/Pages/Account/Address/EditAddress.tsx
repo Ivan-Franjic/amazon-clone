@@ -60,7 +60,7 @@ export default function EditAddress() {
     <>
       {loading && <p>Loading</p>}
       {!loading && (
-        <div className="flex flex-col items-center mt-20">
+        <div className="flex flex-col items-center my-20">
           <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
             Edit Address
           </p>

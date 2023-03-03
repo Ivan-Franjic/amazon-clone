@@ -39,7 +39,7 @@ export default function Addresses() {
     <>
       {loading && <p>Loading</p>}
       {!loading && (
-        <div className="flex flex-col items-center ml-2 mt-2 lg:items-start lg:ml-16">
+        <div className="flex flex-col items-center ml-2 mt-2 mb-20 lg:items-start lg:ml-16">
           <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
             Your Addresses
           </p>

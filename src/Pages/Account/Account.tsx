@@ -5,7 +5,7 @@ export default function Account() {
       <p className="flex p-5 font-semibold lg:text-3xl lg:font-normal">
         Your Account
       </p>
-      <div className="flex flex-col gap-2 lg:flex-row lg:gap-5">
+      <div className="flex flex-col gap-2 lg:flex-row lg:gap-5 mb-28">
         <Link to={`/account/orders`}>
           <div className="flex w-80 h-20 bg-white border border-gray rounded-lg lg:h-24 hover:bg-lgray">
             <img
