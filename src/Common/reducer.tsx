@@ -1,3 +1,12 @@
+const getLocalBasketData = () => {
+  let localBasketData = localStorage.getItem("basket");
+  if (localBasketData) {
+    return JSON.parse(localBasketData);
+  } else {
+    return [];
+  }
+};
+
 export interface IState {
   user: any;
   basket: any;
@@ -11,7 +20,7 @@ export interface IState {
 
 export const initialState: IState = {
   user: null,
-  basket: [],
+  basket: getLocalBasketData(),
   products: [],
   productDetails: [],
   relatedProducts: [],

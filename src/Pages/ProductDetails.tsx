@@ -68,6 +68,10 @@ export default function ProductDetails() {
     getProductDetails();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(state.basket));
+  }, [state.basket]);
+
   return (
     <>
       {loading && <p>Loading</p>}
