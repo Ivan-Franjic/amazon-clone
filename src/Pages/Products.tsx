@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Product from "../Components/Product/Product";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../Common/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useGlobalContext } from "../Common/StateProvider";
-import reducer, { initialState, actionTypes } from "../Common/reducer";
+import { actionTypes } from "../Common/reducer";
+import { IProductData } from "../Types/Product.type";
 
 export default function Products() {
   const { categoryName } = useParams();
@@ -42,7 +43,7 @@ export default function Products() {
       {loading && <p>Loading</p>}
       {!loading && (
         <div className="flex flex-wrap justify-center gap-5 mb-20 mt-5 overflow-y-auto lg:mx-10">
-          {state.products[1].map((item: any) => (
+          {state.products[1].map((item: IProductData) => (
             <Link
               to={`/productdetails/${item.category}/${item.id}`}
               key={item.id}

@@ -1,6 +1,8 @@
 import CheckoutProduct from "../Components/Checkout/CheckoutProduct";
 import { useGlobalContext } from "../Common/StateProvider";
 import ConfirmOrder from "../Components/Checkout/ConfirmOrder";
+import { ICheckoutProductData } from "../Types/CheckoutProduct.type";
+
 export default function Checkout() {
   const { state, dispatch } = useGlobalContext();
   return (
@@ -9,7 +11,7 @@ export default function Checkout() {
         <div className="w-full mx-2.5">
           <h2 className="flex p-5 text-2xl font-medium">Checkout</h2>
 
-          {state.basket.map((item: any) => (
+          {state.basket.map((item: ICheckoutProductData) => (
             <div key={item.id} className="border-t border-solid border-gray">
               <CheckoutProduct
                 id={item.id}

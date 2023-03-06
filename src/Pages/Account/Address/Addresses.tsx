@@ -6,6 +6,7 @@ import { db } from "../../../Common/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useGlobalContext } from "../../../Common/StateProvider";
 import { actionTypes } from "../../../Common/reducer";
+import { IAddressData } from "../../../Types/Address.type";
 
 export default function Addresses() {
   const { state, dispatch } = useGlobalContext();
@@ -47,7 +48,7 @@ export default function Addresses() {
             <Link to={"/account/addresses/addaddress"}>
               <AddAddress />
             </Link>
-            {state.addresses[1].map((item: any) => (
+            {state.addresses[1].map((item: IAddressData) => (
               <Address
                 key={item.id}
                 id={item.id}

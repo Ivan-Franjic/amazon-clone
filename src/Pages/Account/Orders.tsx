@@ -4,6 +4,8 @@ import { db } from "../../Common/firebase";
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { actionTypes } from "../../Common/reducer";
 import { useGlobalContext } from "../../Common/StateProvider";
+import { IOrderData } from "../../Types/Order.type";
+
 export default function Orders() {
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
@@ -42,7 +44,7 @@ export default function Orders() {
       {!loading && (
         <div className="flex flex-col items-center my-10 gap-4">
           <p className="flex lg:py-5 lg:text-3xl">Your Orders</p>
-          {state.orders[1].map((item: any) => (
+          {state.orders[1].map((item: IOrderData) => (
             <Order
               key={item.id}
               id={item.id}
