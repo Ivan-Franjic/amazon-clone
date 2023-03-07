@@ -1,8 +1,9 @@
 import { getBasketTotal } from "../../Common/reducer";
 import { db } from "../../Common/firebase";
-import { collection, addDoc } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
+import { actionTypes } from "../../Common/reducer";
 
 export default function ConfirmOrder() {
   const navigate = useNavigate();
@@ -25,8 +26,19 @@ export default function ConfirmOrder() {
       user_id: state.user.uid,
       total: total,
     });
+    state.basket.map((curElem: any) => {
+      const productscol = collection(db, "products");
+      const querySnapshotDetails = doc(productscol, curElem.id);
+      updateDoc(querySnapshotDetails, {
+        quantity: curElem.max_quantity - curElem.amount,
+      });
+    });
+    dispatch({
+      type: actionTypes.EMPTY_BASKET,
+    });
     navigate("/account/orders");
   };
+
   return (
     <div className="flex flex-col justify-between h-44 p-5 bg-white border-x border-y border-solid border-lgray lg:mx-5 lg:rounded-lg lg:w-full">
       <>

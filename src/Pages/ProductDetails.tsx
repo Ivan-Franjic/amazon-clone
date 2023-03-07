@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import Product from "../Components/Product/Product";
+import ItemQuantity from "../Components/Checkout/ItemQuantity";
 import { db } from "../Common/firebase";
 import {
   collection,
@@ -13,13 +14,25 @@ import {
 } from "firebase/firestore";
 import { useGlobalContext } from "../Common/StateProvider";
 import { actionTypes } from "../Common/reducer";
+import { IProductData } from "../Types/Product.type";
 
 export default function ProductDetails() {
   const { productCategory, productId } = useParams();
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const [amount, setAmount] = useState(1);
 
-  const addToBasket = () => {
+  const setDecrease = () => {
+    amount > 1 ? setAmount(amount - 1) : setAmount(1);
+  };
+
+  const setIncrease = () => {
+    amount < state.productDetails.data.quantity
+      ? setAmount(amount + 1)
+      : setAmount(state.productDetails.data.quantity);
+  };
+
+  const addToBasket = (id: string, amount: number) => {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
       item: {
@@ -30,6 +43,8 @@ export default function ProductDetails() {
         rating: state.productDetails.data.rating,
         description: state.productDetails.data.description,
         category: state.productDetails.data.category,
+        max_quantity: state.productDetails.data.quantity,
+        amount: amount,
       },
     });
   };
@@ -128,29 +143,32 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-orange lg:flex lg:p-5">
                         Only {state.productDetails.data.quantity} available.
                       </p>
-                      <form className="hidden lg:flex lg:ml-5">
-                        <label htmlFor="selectedQuantity">Quantity</label>
-                        <select
-                          className="bg-white border border-solid border-black ml-2.5"
-                          name="selectedQuantity"
-                        >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                        </select>
-                      </form>
+                      <label>Quantity</label>
+                      <ItemQuantity
+                        amount={amount}
+                        setDecrease={setDecrease}
+                        setIncrease={setIncrease}
+                      ></ItemQuantity>
                       <div className="flex flex-col w-full justify-center">
                         <button
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
-                          onClick={addToBasket}
+                          onClick={() =>
+                            addToBasket(state.productDetails.data.id, amount)
+                          }
                         >
                           Add to Basket
                         </button>
                         <Link
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
-                          to={`/checkout`}
+                          to={`/basket`}
                         >
-                          <button onClick={addToBasket}>Buy now</button>
+                          <button
+                            onClick={() =>
+                              addToBasket(state.productDetails.data.id, amount)
+                            }
+                          >
+                            Buy now
+                          </button>
                         </Link>
                       </div>
                     </>
@@ -161,29 +179,32 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-green lg:flex lg:p-5">
                         In stock.
                       </p>
-                      <form className="hidden lg:flex lg:ml-5">
-                        <label htmlFor="selectedQuantity">Quantity</label>
-                        <select
-                          className="bg-white border border-solid border-black ml-2.5"
-                          name="selectedQuantity"
-                        >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                        </select>
-                      </form>
+                      <label>Quantity</label>
+                      <ItemQuantity
+                        amount={amount}
+                        setDecrease={setDecrease}
+                        setIncrease={setIncrease}
+                      ></ItemQuantity>
                       <div className="flex flex-col w-full justify-center">
                         <button
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
-                          onClick={addToBasket}
+                          onClick={() =>
+                            addToBasket(state.productDetails.data.id, amount)
+                          }
                         >
                           Add to Basket
                         </button>
                         <Link
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
-                          to={`/checkout`}
+                          to={`/basket`}
                         >
-                          <button onClick={addToBasket}>Buy now</button>
+                          <button
+                            onClick={() =>
+                              addToBasket(state.productDetails.data.id, amount)
+                            }
+                          >
+                            Buy now
+                          </button>
                         </Link>
                       </div>
                     </>
@@ -205,7 +226,7 @@ export default function ProductDetails() {
               Products related to this item
             </p>
             <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
-              {state.relatedProducts[1].map((item: any) => (
+              {state.relatedProducts[1].map((item: IProductData) => (
                 <Link
                   to={`/productdetails/${item.category}/${item.id}`}
                   key={item.id}

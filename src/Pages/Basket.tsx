@@ -2,9 +2,17 @@ import Subtotal from "../Components/Checkout/Subtotal";
 import BasketProduct from "../Components/Checkout/BasketProduct";
 import { useGlobalContext } from "../Common/StateProvider";
 import { useEffect, useState } from "react";
+import { actionTypes } from "../Common/reducer";
+import { IBasketProductData } from "../Types/BasketProduct.type";
 
 export default function Basket() {
   const { state, dispatch } = useGlobalContext();
+
+  const emptyBasket = () => {
+    dispatch({
+      type: actionTypes.EMPTY_BASKET,
+    });
+  };
 
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(state.basket));
@@ -25,7 +33,7 @@ export default function Basket() {
               </h2>
             )}
           </div>
-          {state.basket.map((item: any) => (
+          {state.basket.map((item: IBasketProductData) => (
             <div key={item.id} className="border-t border-solid border-gray">
               <BasketProduct
                 id={item.id}
@@ -34,11 +42,19 @@ export default function Basket() {
                 price={item.price}
                 rating={item.rating}
                 category={item.category}
-                hideButton
+                description={item.description}
+                max_quantity={item.max_quantity}
+                amount={item.amount}
               />
             </div>
           ))}
         </div>
+        {/* <a
+          className="mt-2.5 text-lblue bg-white border-none cursor-pointer hover:underline"
+          onClick={emptyBasket}
+        >
+          empty
+        </a> */}
         {state.basket.length > 0 ? (
           <div className="checkout__right">
             <Subtotal />

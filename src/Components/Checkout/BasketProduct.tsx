@@ -2,6 +2,7 @@ import { actionTypes } from "../../Common/reducer";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { IBasketProductData } from "../../Types/BasketProduct.type";
+import ItemQuantity from "./ItemQuantity";
 
 export default function BasketProduct({
   id,
@@ -9,12 +10,18 @@ export default function BasketProduct({
   image,
   price,
   category,
-  hideButton,
+  amount,
 }: IBasketProductData) {
   const { state, dispatch } = useGlobalContext();
 
+  const setDecrease = (id: string) => {
+    dispatch({ type: actionTypes.SET_DECREASE, id: id });
+  };
+
+  const setIncrease = (id: string) => {
+    dispatch({ type: actionTypes.SET_INCREASE, id: id });
+  };
   const removeFromBasket = () => {
-    // remove the item from the basket
     dispatch({
       type: actionTypes.REMOVE_FROM_BASKET,
       id: id,
@@ -37,16 +44,19 @@ export default function BasketProduct({
             <strong>${price}</strong>
           </p>
         </div>
-        {hideButton && (
-          <div className="flex">
-            <a
-              className="mt-2.5 text-lblue bg-white border-none cursor-pointer hover:underline"
-              onClick={removeFromBasket}
-            >
-              Remove
-            </a>
-          </div>
-        )}
+        <div className="flex">
+          <ItemQuantity
+            amount={amount}
+            setDecrease={() => setDecrease(id)}
+            setIncrease={() => setIncrease(id)}
+          ></ItemQuantity>
+          <a
+            className="mt-2.5 text-lblue bg-white border-none cursor-pointer hover:underline"
+            onClick={removeFromBasket}
+          >
+            Remove
+          </a>
+        </div>
       </div>
     </div>
   );

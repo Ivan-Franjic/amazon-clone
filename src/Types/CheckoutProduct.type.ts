@@ -3,4 +3,5 @@ export interface ICheckoutProductData {
   name: string;
   image: string;
   price: number;
+  amount: number;
 }

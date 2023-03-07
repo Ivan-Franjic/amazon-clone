@@ -5,5 +5,7 @@ export interface IBasketProductData {
   price: number;
   rating: number;
   category: string;
-  hideButton: any;
+  description: string;
+  max_quantity: number;
+  amount: number;
 }
