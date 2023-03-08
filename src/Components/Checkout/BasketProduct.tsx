@@ -44,14 +44,14 @@ export default function BasketProduct({
             <strong>${price}</strong>
           </p>
         </div>
-        <div className="flex">
+        <div className="flex mt-2">
           <ItemQuantity
             amount={amount}
             setDecrease={() => setDecrease(id)}
             setIncrease={() => setIncrease(id)}
           ></ItemQuantity>
           <a
-            className="mt-2.5 text-lblue bg-white border-none cursor-pointer hover:underline"
+            className="ml-5 mt-3 text-lblue bg-white border-none cursor-pointer hover:underline"
             onClick={removeFromBasket}
           >
             Remove

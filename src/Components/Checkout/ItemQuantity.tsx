@@ -8,13 +8,13 @@ export default function ItemQuantity({
   setIncrease,
 }: IItemQuantityData) {
   return (
-    <div className="cart-button">
-      <div className="amount-toggle">
-        <button onClick={() => setDecrease()}>
+    <div className="flex justify-center">
+      <div className="flex">
+        <button className="text-xs" onClick={() => setDecrease()}>
           <FaMinus />
         </button>
-        <div className="amount-style">{amount}</div>
-        <button onClick={() => setIncrease()}>
+        <p className="border solid px-2">{amount}</p>
+        <button className="text-xs" onClick={() => setIncrease()}>
           <FaPlus />
         </button>
       </div>
