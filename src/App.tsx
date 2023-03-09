@@ -11,6 +11,7 @@ import Basket from "./Pages/Basket";
 import Checkout from "./Pages/Checkout";
 import Account from "./Pages/Account/Account";
 import Orders from "./Pages/Account/Orders";
+import AddReview from "./Pages/Account/AddReview";
 import Addresses from "./Pages/Account/Address/Addresses";
 import AddAddress from "./Pages/Account/Address/AddAddress";
 import EditAddress from "./Pages/Account/Address/EditAddress";
@@ -59,6 +60,10 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/account" element={<Account />}></Route>
           <Route path="/account/orders" element={<Orders />}></Route>
+          <Route
+            path="/account/orders/order/:orderId"
+            element={<AddReview />}
+          ></Route>
           <Route
             path="/account/login&security"
             element={<LoginSecurity />}
