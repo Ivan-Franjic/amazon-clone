@@ -41,6 +41,7 @@ export default function ProductDetails() {
         image: state.productDetails.data.image,
         price: state.productDetails.data.price,
         rating: state.productDetails.data.rating,
+        rating_total: state.productDetails.data.rating_total,
         description: state.productDetails.data.description,
         category: state.productDetails.data.category,
         max_quantity: state.productDetails.data.quantity,
@@ -69,10 +70,26 @@ export default function ProductDetails() {
         image: doc.data().image,
         name: doc.data().name,
         rating: doc.data().rating,
+        rating_total: doc.data().rating_total,
         price: doc.data().price,
         quantity: doc.data().quantity,
         category: doc.data().category,
         description: doc.data().description,
+      })),
+    });
+    const reviewscol = query(
+      collection(db, "reviews"),
+      where("product_id", "==", productId)
+    );
+    const querySnapshotReviews = await getDocs(reviewscol);
+    dispatch({
+      type: actionTypes.GET_PRODUCT_REVIEWS,
+      item: querySnapshotReviews.docs.map((doc) => ({
+        id: doc.id,
+        headline: doc.data().headline,
+        review: doc.data().review,
+        rating: doc.data().rating,
+        username: doc.data().username,
       })),
     });
 
@@ -112,6 +129,9 @@ export default function ProductDetails() {
                   precision={0.1}
                   readOnly
                 />
+                <p className="ml-10 text-lblue">
+                  {state.productDetails.data.rating_total} ratings
+                </p>
               </div>
               <p className="flex p-1 lg:p-5">
                 ${state.productDetails.data.price}
@@ -143,12 +163,14 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-orange lg:flex lg:p-5">
                         Only {state.productDetails.data.quantity} available.
                       </p>
-                      <label>Quantity</label>
-                      <ItemQuantity
-                        amount={amount}
-                        setDecrease={setDecrease}
-                        setIncrease={setIncrease}
-                      ></ItemQuantity>
+                      <div className="flex justify-center mb-2">
+                        Qty:
+                        <ItemQuantity
+                          amount={amount}
+                          setDecrease={setDecrease}
+                          setIncrease={setIncrease}
+                        ></ItemQuantity>
+                      </div>
                       <div className="flex flex-col w-full justify-center">
                         <button
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
@@ -179,12 +201,14 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-green lg:flex lg:p-5">
                         In stock.
                       </p>
-                      <label>Quantity</label>
-                      <ItemQuantity
-                        amount={amount}
-                        setDecrease={setDecrease}
-                        setIncrease={setIncrease}
-                      ></ItemQuantity>
+                      <div className="flex justify-center mb-2">
+                        Qty:
+                        <ItemQuantity
+                          amount={amount}
+                          setDecrease={setDecrease}
+                          setIncrease={setIncrease}
+                        ></ItemQuantity>
+                      </div>
                       <div className="flex flex-col w-full justify-center">
                         <button
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
@@ -236,12 +260,32 @@ export default function ProductDetails() {
                     image={item.image}
                     name={item.name}
                     rating={item.rating}
+                    rating_total={item.rating_total}
                     price={item.price}
                     quantity={item.quantity}
                     category={item.category}
                     description={item.description}
                   />
                 </Link>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 my-10 lg:my-32">
+            <p className="flex ml-10 text-2xl font-semibold">Reviews</p>
+            <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
+              {state.productReviews[1].map((item: any) => (
+                <div key={item.id}>
+                  <Rating
+                    className="lg:mb-2.5"
+                    name="half-rating-read"
+                    defaultValue={item.rating}
+                    precision={0.1}
+                    readOnly
+                  />
+                  <p>{item.headline}</p>
+                  <p>{item.review}</p>
+                  <p>{item.username}</p>
+                </div>
               ))}
             </div>
           </div>

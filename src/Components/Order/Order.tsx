@@ -1,4 +1,5 @@
 import { IOrderData } from "../../Types/Order.type";
+import { Link } from "react-router-dom";
 export default function Order({
   id,
   name,
@@ -26,12 +27,24 @@ export default function Order({
         {items.map((item: any) => (
           <div key={item.id} className="flex justify-between">
             <div className="flex my-3">
-              <div className="w-28 h-28s">
+              <div className="w-28 h-28">
                 <img className="object-contain" src={item.image} />
               </div>
               <div className="flex flex-col ml-2">
                 <strong>{item.name}</strong>
                 <p>{item.description}</p>
+                <Link
+                  to={`/account/orders/order/${item.id}`}
+                  state={{
+                    review_item_image: item.image,
+                    review_item_name: item.name,
+                    review_item_id: item.id,
+                  }}
+                >
+                  <p className="mt-2 text-sm text-lblue cursor-pointer hover:underline">
+                    Leave review
+                  </p>
+                </Link>
               </div>
             </div>
             <strong className="mt-3">${item.price}</strong>

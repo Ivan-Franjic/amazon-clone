@@ -6,6 +6,7 @@ export default function Product({
   image,
   name,
   rating,
+  rating_total,
   price,
   quantity,
   category,
@@ -25,6 +26,7 @@ export default function Product({
             precision={0.1}
             readOnly
           />
+          <p className="ml-2 text-lblue">({rating_total})</p>
         </div>
         <div className="flex items-center justify-between mt-6">
           <span className="text-md font-bold text-black">${price}</span>

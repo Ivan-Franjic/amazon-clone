@@ -25,6 +25,7 @@ export default function Products() {
         image: doc.data().image,
         name: doc.data().name,
         rating: doc.data().rating,
+        rating_total: doc.data().rating_total,
         price: doc.data().price,
         quantity: doc.data().quantity,
         category: doc.data().category,
@@ -53,6 +54,7 @@ export default function Products() {
                 image={item.image}
                 name={item.name}
                 rating={item.rating}
+                rating_total={item.rating_total}
                 price={item.price}
                 quantity={item.quantity}
                 category={item.category}

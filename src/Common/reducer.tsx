@@ -15,6 +15,7 @@ export interface IState {
   products: any;
   productDetails: any;
   relatedProducts: any;
+  productReviews: any;
   addresses: any;
   addressDetails: any;
   orders: any;
@@ -26,6 +27,7 @@ export const initialState: IState = {
   products: [],
   productDetails: [],
   relatedProducts: [],
+  productReviews: [],
   addresses: [],
   addressDetails: [],
   orders: [],
@@ -36,6 +38,7 @@ export enum actionTypes {
   GET_PRODUCTS = "GET_PRODUCTS",
   GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS",
   GET_RELATED_PRODUCTS = "GET_RELATED_PRODUCTS",
+  GET_PRODUCT_REVIEWS = "GET_PRODUCT_REVIEWS",
   GET_ADDRESSES = "GET_ADDRESSES",
   GET_ADDRESS_DETAILS = "GET_ADDRESS_DETAILS",
   ADD_TO_BASKET = "ADD_TO_BASKET",
@@ -61,6 +64,10 @@ export type IAction =
     }
   | {
       type: actionTypes.GET_RELATED_PRODUCTS;
+      item: any;
+    }
+  | {
+      type: actionTypes.GET_PRODUCT_REVIEWS;
       item: any;
     }
   | {
@@ -128,6 +135,11 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         relatedProducts: [state.relatedProducts, action.item],
+      };
+    case actionTypes.GET_PRODUCT_REVIEWS:
+      return {
+        ...state,
+        productReviews: [state.productReviews, action.item],
       };
     case actionTypes.GET_ADDRESSES:
       return {
