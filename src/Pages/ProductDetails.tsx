@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import Product from "../Components/Product/Product";
+import ProductReview from "../Components/Product/ProductReview";
 import ItemQuantity from "../Components/Checkout/ItemQuantity";
 import { db } from "../Common/firebase";
 import {
@@ -98,7 +99,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     getProductDetails();
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(state.basket));
@@ -271,21 +272,19 @@ export default function ProductDetails() {
             </div>
           </div>
           <div className="flex flex-col gap-5 my-10 lg:my-32">
-            <p className="flex ml-10 text-2xl font-semibold">Reviews</p>
-            <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
+            <p className="flex ml-10 text-2xl font-semibold">
+              Customer reviews
+            </p>
+            <div className="flex flex-col items-center gap-10 ">
               {state.productReviews[1].map((item: any) => (
-                <div key={item.id}>
-                  <Rating
-                    className="lg:mb-2.5"
-                    name="half-rating-read"
-                    defaultValue={item.rating}
-                    precision={0.1}
-                    readOnly
-                  />
-                  <p>{item.headline}</p>
-                  <p>{item.review}</p>
-                  <p>{item.username}</p>
-                </div>
+                <ProductReview
+                  key={item.id}
+                  id={item.id}
+                  rating={item.rating}
+                  headline={item.headline}
+                  review={item.review}
+                  username={item.username}
+                ></ProductReview>
               ))}
             </div>
           </div>
