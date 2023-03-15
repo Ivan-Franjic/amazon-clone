@@ -1,5 +1,6 @@
 import Rating from "@mui/material/Rating";
 import { IProductReviewData } from "../../Types/ProductReview.type";
+import userPhoto from "../../assets/user.jpg";
 export default function ProductReview({
   id,
   rating,
@@ -10,8 +11,11 @@ export default function ProductReview({
   return (
     <div className="flex flex-col w-96">
       <div className="flex">
-        <img />
-        <p className="ml-2">{username}</p>
+        <img
+          className="object-contain rounded-full w-10 h-10"
+          src={userPhoto}
+        />
+        <p className="mt-2 ml-2">{username}</p>
       </div>
       <div className="flex">
         <Rating

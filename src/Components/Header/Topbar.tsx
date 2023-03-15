@@ -3,7 +3,6 @@ import "./Topbar.css";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Common/firebase";
-import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useGlobalContext } from "../../Common/StateProvider";
 
@@ -101,9 +100,6 @@ export default function Topbar() {
             </div>
           </Link>
         )}
-        <div className="cursor-pointer" onClick={ToggleSidebar}>
-          <AiOutlineClose />
-        </div>
       </div>
       <div
         className={`sidebar-overlay ${isOpen == true ? "active" : ""}`}
