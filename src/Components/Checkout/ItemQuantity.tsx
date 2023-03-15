@@ -9,7 +9,7 @@ export default function ItemQuantity({
 }: IItemQuantityData) {
   return (
     <div className="flex justify-center">
-      <div className="flex">
+      <div className="flex w-8 h-6">
         <button className="text-xs" onClick={() => setDecrease()}>
           <FaMinus />
         </button>

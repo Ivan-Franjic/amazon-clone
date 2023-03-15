@@ -17,7 +17,7 @@ export default function Product({
       <div className="flex self-center w-28 h-40 mb-6 mt-2 lg:w-40 lg:mt-5">
         <img className="object-cover" src={image} alt="product image" />
       </div>
-      <div className="px-5 pb-5">
+      <div className="px-2 pb-5 lg:px-5">
         <h5 className="text-md tracking-tight text-black">{name}</h5>
         <div className="flex">
           <Rating
@@ -26,7 +26,7 @@ export default function Product({
             precision={0.1}
             readOnly
           />
-          <p className="ml-2 text-lblue">({rating_total})</p>
+          <p className="ml-0.5 text-lblue lg:ml-2">({rating_total})</p>
         </div>
         <div className="flex items-center justify-between mt-6">
           <span className="text-md font-bold text-black">${price}</span>

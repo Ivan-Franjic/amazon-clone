@@ -51,7 +51,7 @@ export default function BasketProduct({
             setIncrease={() => setIncrease(id)}
           ></ItemQuantity>
           <a
-            className="ml-5 mt-3 text-lblue bg-white border-none cursor-pointer hover:underline"
+            className="ml-5 mt-10 text-lblue bg-white border-none cursor-pointer hover:underline"
             onClick={removeFromBasket}
           >
             Remove

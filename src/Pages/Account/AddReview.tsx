@@ -68,7 +68,7 @@ export default function AddReview() {
             <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
               Create Review
             </p>
-            <div className="flex flex-col w-11/12 h-full bg-white lg:w-2/5">
+            <div className="flex flex-col w-96 h-full bg-white lg:w-2/5">
               <div className="flex px-5 border-b solid border-gray">
                 <img
                   className="object-contain w-28 h-28"
@@ -82,7 +82,7 @@ export default function AddReview() {
                     Overall rating
                   </p>
                   <Rating
-                    className="lg:mb-2.5"
+                    className="mb-2.5"
                     name="simple-controlled"
                     value={rating}
                     precision={0.1}
@@ -99,7 +99,7 @@ export default function AddReview() {
                     value={headline}
                     placeholder="What's most important to know?"
                     onChange={(e) => setHeadline(e.target.value)}
-                    className="flex text-xs w-96 bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
+                    className="flex text-xs w-80 lg:w-96 bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
                     required
                   />
                   <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
@@ -111,7 +111,7 @@ export default function AddReview() {
                     placeholder="What did you like or dislike? What did you use this product for?"
                     onChange={(e) => setReview(e.target.value)}
                     required
-                    className="flex text-xs w-96 h-44 bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
+                    className="flex text-xs w-80 h-44 lg:w-96 lg:h-44 bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
                   />
                   <button
                     type="submit"

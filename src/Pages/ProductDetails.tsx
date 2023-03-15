@@ -111,7 +111,7 @@ export default function ProductDetails() {
       {!loading && (
         <>
           <div className="flex flex-col lg:flex-row">
-            <div className="flex p-1 lg:w-2/5 lg:h-2/5 lg:p-5 overflow-hidden">
+            <div className="flex p-2 lg:w-2/5 lg:h-2/5 lg:p-5 overflow-hidden">
               <img
                 className="object-cover hover:scale-110 ease-in duration-500"
                 src={state.productDetails.data.image}
@@ -119,10 +119,10 @@ export default function ProductDetails() {
               />
             </div>
             <div className="flex flex-col">
-              <p className="flex p-1 lg:p-5">
+              <p className="flex p-2 lg:p-5">
                 {state.productDetails.data.name}
               </p>
-              <div className="flex lg:ml-5 lg:border-b lg:border-solid lg:border-gray">
+              <div className="flex p-2 lg:p-1 lg:ml-4 lg:border-b lg:border-solid lg:border-gray">
                 <Rating
                   className="lg:mb-2.5"
                   name="half-rating-read"
@@ -130,14 +130,14 @@ export default function ProductDetails() {
                   precision={0.1}
                   readOnly
                 />
-                <p className="ml-10 text-lblue">
+                <p className="text-lblue ml-2">
                   {state.productDetails.data.rating_total} ratings
                 </p>
               </div>
-              <p className="flex p-1 lg:p-5">
+              <p className="flex p-2 lg:p-5">
                 ${state.productDetails.data.price}
               </p>
-              <p className="flex p-1 lg:ml-5">
+              <p className="flex p-2 lg:p-5">
                 {state.productDetails.data.description}
               </p>
             </div>
@@ -145,9 +145,7 @@ export default function ProductDetails() {
               <p className="hidden text-xl text-bold lg:flex lg:p-5">
                 ${state.productDetails.data.price}
               </p>
-              <p className="hidden text-sm lg:flex lg:ml-5 lg:mb-2.5">
-                FREE Returns
-              </p>
+              <p className="hidden text-sm lg:flex lg:ml-5">FREE Returns</p>
               {(() => {
                 if (state.productDetails.data.quantity === 0) {
                   return (
@@ -164,7 +162,7 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-orange lg:flex lg:p-5">
                         Only {state.productDetails.data.quantity} available.
                       </p>
-                      <div className="flex justify-center mb-2">
+                      <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 lg:ml-5">
                         Qty:
                         <ItemQuantity
                           amount={amount}
@@ -172,9 +170,9 @@ export default function ProductDetails() {
                           setIncrease={setIncrease}
                         ></ItemQuantity>
                       </div>
-                      <div className="flex flex-col w-full justify-center">
+                      <div className="flex flex-col justify-center">
                         <button
-                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
+                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
                           onClick={() =>
                             addToBasket(state.productDetails.data.id, amount)
                           }
@@ -182,7 +180,7 @@ export default function ProductDetails() {
                           Add to Basket
                         </button>
                         <Link
-                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
+                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
                           to={`/basket`}
                         >
                           <button
@@ -202,7 +200,7 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-green lg:flex lg:p-5">
                         In stock.
                       </p>
-                      <div className="flex justify-center mb-2">
+                      <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 lg:ml-5">
                         Qty:
                         <ItemQuantity
                           amount={amount}
@@ -212,7 +210,7 @@ export default function ProductDetails() {
                       </div>
                       <div className="flex flex-col w-full justify-center">
                         <button
-                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
+                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
                           onClick={() =>
                             addToBasket(state.productDetails.data.id, amount)
                           }
@@ -220,7 +218,7 @@ export default function ProductDetails() {
                           Add to Basket
                         </button>
                         <Link
-                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange lg:w-48"
+                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
                           to={`/basket`}
                         >
                           <button
@@ -275,7 +273,7 @@ export default function ProductDetails() {
             <p className="flex ml-10 text-2xl font-semibold">
               Customer reviews
             </p>
-            <div className="flex flex-col items-center gap-10 ">
+            <div className="flex flex-col items-center gap-10 ml-4">
               {state.productReviews[1].map((item: any) => (
                 <ProductReview
                   key={item.id}

@@ -11,10 +11,7 @@ export default function ProductReview({
   return (
     <div className="flex flex-col w-96">
       <div className="flex">
-        <img
-          className="object-contain rounded-full w-10 h-10"
-          src={userPhoto}
-        />
+        <img className="object-cover rounded-full w-10 h-10" src={userPhoto} />
         <p className="mt-2 ml-2">{username}</p>
       </div>
       <div className="flex">
