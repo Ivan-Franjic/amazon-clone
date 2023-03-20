@@ -6,11 +6,13 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useGlobalContext } from "../Common/StateProvider";
 import { actionTypes } from "../Common/reducer";
 import { IProductData } from "../Types/Product.type";
+import { useTranslation } from "react-i18next";
 
 export default function Products() {
   const { categoryName } = useParams();
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const getProducts = async () => {
     const productscol = query(
@@ -41,7 +43,7 @@ export default function Products() {
 
   return (
     <>
-      {loading && <p>Loading</p>}
+      {loading && <p>{t("loading")}</p>}
       {!loading && (
         <div className="flex flex-wrap justify-center gap-5 mb-20 mt-5 lg:mx-10">
           {state.products[1].map((item: IProductData) => (

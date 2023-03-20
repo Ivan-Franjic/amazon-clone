@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../../../Common/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useGlobalContext } from "../../../Common/StateProvider";
+import { useTranslation } from "react-i18next";
+
 export default function AddAddress() {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
@@ -11,6 +13,7 @@ export default function AddAddress() {
   const [city, setCity] = useState<string>("");
   const [country, setCountry] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const { t } = useTranslation();
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -28,18 +31,16 @@ export default function AddAddress() {
   return (
     <div className="flex flex-col items-center my-20">
       <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
-        Add New Address
+        {t("add_new_address")}
       </p>
       <div className="flex flex-col w-11/12 h-full bg-white border border-gray rounded-md lg:w-2/5">
         <p className="flex p-2 text-xs lg:text-base">
-          If you want to add new address associated with your Amazon customer
-          account, you may do so below. Make sure that you click the Save
-          Changes button when you have finished.
+          {t("add_new_address_details")}
         </p>
         <form className="flex px-5 mt-2" onSubmit={onSubmit}>
           <div className="flex flex-col">
             <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-              Name
+              {t("name")}
             </p>
             <input
               name="name"
@@ -50,7 +51,7 @@ export default function AddAddress() {
               required
             />
             <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-              Street and house number
+              {t("street")}
             </p>
             <input
               name="street"
@@ -61,7 +62,7 @@ export default function AddAddress() {
               className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
             />
             <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-              City, postal code
+              {t("city")}
             </p>
             <input
               name="city"
@@ -72,7 +73,7 @@ export default function AddAddress() {
               className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
             />
             <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-              Country
+              {t("country")}
             </p>
             <input
               name="country"
@@ -83,7 +84,7 @@ export default function AddAddress() {
               className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
             />
             <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-              Phone number
+              {t("mobile_number")}
             </p>
             <input
               name="contact"
@@ -98,7 +99,7 @@ export default function AddAddress() {
               type="submit"
               className="flex justify-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
             >
-              Add address
+              {t("add_address")}
             </button>
           </div>
         </form>

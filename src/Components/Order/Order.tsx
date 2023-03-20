@@ -1,5 +1,7 @@
 import { IOrderData } from "../../Types/Order.type";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 export default function Order({
   id,
   name,
@@ -7,19 +9,21 @@ export default function Order({
   order_date,
   total,
 }: IOrderData) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col w-11/12 h-48 bg-white border border-gray rounded-lg lg:w-2/4 lg:h-content">
       <div className="flex px-5 border-b gap-5 border-gray bg-lgray">
         <div className="flex flex-col text-xs tracking-tight text-dgray my-2.5 lg:text-sm">
-          ORDER PLACED
+          {t("order_placed")}
           <p>{order_date}</p>
         </div>
         <div className="flex flex-col text-xs tracking-tight text-dgray my-2.5 lg:text-sm">
-          TOTAL
+          {t("total")}
           <p>${total}</p>
         </div>
         <div className="flex flex-col text-xs tracking-tight text-dgray my-2.5 lg:text-sm">
-          DISPATCH TO
+          {t("dispatch")}
           <p>{name}</p>
         </div>
       </div>
@@ -42,7 +46,7 @@ export default function Order({
                   }}
                 >
                   <p className="mt-2 text-sm text-lblue cursor-pointer hover:underline">
-                    Leave review
+                    {t("leave_review")}
                   </p>
                 </Link>
               </div>

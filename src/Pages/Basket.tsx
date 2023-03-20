@@ -1,13 +1,14 @@
 import Subtotal from "../Components/Checkout/Subtotal";
 import BasketProduct from "../Components/Checkout/BasketProduct";
 import { useGlobalContext } from "../Common/StateProvider";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { actionTypes } from "../Common/reducer";
 import { IBasketProductData } from "../Types/BasketProduct.type";
+import { useTranslation } from "react-i18next";
 
 export default function Basket() {
   const { state, dispatch } = useGlobalContext();
-
+  const { t } = useTranslation();
   const emptyBasket = () => {
     dispatch({
       type: actionTypes.EMPTY_BASKET,
@@ -25,11 +26,11 @@ export default function Basket() {
           <div className="w-full">
             {state.basket.length > 0 ? (
               <h2 className="flex p-5 mx-2.5 text-2xl font-medium">
-                Shopping Basket
+                {t("cart")}
               </h2>
             ) : (
               <h2 className="flex p-5 text-2xl font-medium">
-                Your Amazon Cart is empty.
+                {t("cart_empty")}
               </h2>
             )}
           </div>
@@ -41,6 +42,7 @@ export default function Basket() {
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
+                rating_total={item.rating_total}
                 category={item.category}
                 description={item.description}
                 max_quantity={item.max_quantity}

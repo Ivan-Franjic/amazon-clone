@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 export default function Account() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col items-center">
       <p className="flex p-5 font-semibold lg:text-3xl lg:font-normal">
-        Your Account
+        {t("your_account")}
       </p>
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-5 mb-28">
         <Link to={`/account/orders`}>
@@ -15,10 +19,10 @@ export default function Account() {
             />
             <div className="flex flex-col items-start mr-2 mt-5">
               <h5 className="text-xs tracking-tight text-black lg:text-base">
-                Your Orders
+                {t("your_orders")}
               </h5>
               <p className="text-xs tracking-tight text-dgray lg:text-sm">
-                Track, return or buy things again
+                {t("your_orders_details")}
               </p>
             </div>
           </div>
@@ -33,10 +37,10 @@ export default function Account() {
             />
             <div className="flex flex-col items-start mr-2 mt-5">
               <h5 className="text-xs tracking-tight text-black lg:text-base">
-                Login & Security
+                {t("login_security")}
               </h5>
               <p className="text-xs tracking-tight text-dgray lg:text-sm">
-                Edit login, name and mobile number
+                {t("login_security_details")}
               </p>
             </div>
           </div>
@@ -51,10 +55,10 @@ export default function Account() {
             />
             <div className="flex flex-col items-start mr-2 mt-5">
               <h5 className="text-xs tracking-tight text-black lg:text-base">
-                Your Addresses
+                {t("your_addresses")}
               </h5>
               <p className="text-xs tracking-tight text-dgray lg:text-sm">
-                Edit addresses and delivery options
+                {t("your_addresses_details")}
               </p>
             </div>
           </div>

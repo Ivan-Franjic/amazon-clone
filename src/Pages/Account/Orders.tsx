@@ -5,10 +5,12 @@ import { collection, getDocs, where, query } from "firebase/firestore";
 import { actionTypes } from "../../Common/reducer";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { IOrderData } from "../../Types/Order.type";
+import { useTranslation } from "react-i18next";
 
 export default function Orders() {
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
   const currentUserId = sessionStorage.getItem("currentUserId");
   const currentUserDisplayName = sessionStorage.getItem(
     "currentUserDisplayName"
@@ -40,10 +42,10 @@ export default function Orders() {
 
   return (
     <>
-      {loading && <p>Loading</p>}
+      {loading && <p>{t("loading")}</p>}
       {!loading && (
         <div className="flex flex-col items-center my-10 gap-4">
-          <p className="flex lg:py-5 lg:text-3xl">Your Orders</p>
+          <p className="flex lg:py-5 lg:text-3xl">{t("your_orders")}</p>
           {state.orders[1].map((item: IOrderData) => (
             <Order
               key={item.id}

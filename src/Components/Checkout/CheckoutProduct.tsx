@@ -1,4 +1,3 @@
-import { useGlobalContext } from "../../Common/StateProvider";
 import { ICheckoutProductData } from "../../Types/CheckoutProduct.type";
 
 export default function CheckoutProduct({

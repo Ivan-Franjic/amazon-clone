@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { IBasketProductData } from "../../Types/BasketProduct.type";
 import ItemQuantity from "./ItemQuantity";
+import { useTranslation } from "react-i18next";
 
 export default function BasketProduct({
   id,
@@ -13,7 +14,7 @@ export default function BasketProduct({
   amount,
 }: IBasketProductData) {
   const { state, dispatch } = useGlobalContext();
-
+  const { t } = useTranslation();
   const setDecrease = (id: string) => {
     dispatch({ type: actionTypes.SET_DECREASE, id: id });
   };
@@ -54,7 +55,7 @@ export default function BasketProduct({
             className="ml-5 mt-10 text-lblue bg-white border-none cursor-pointer hover:underline"
             onClick={removeFromBasket}
           >
-            Remove
+            {t("remove")}
           </a>
         </div>
       </div>

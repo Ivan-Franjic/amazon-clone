@@ -5,6 +5,7 @@ import { db } from "../../Common/firebase";
 import { collection, addDoc, doc, updateDoc, getDoc } from "firebase/firestore";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { actionTypes } from "../../Common/reducer";
+import { useTranslation } from "react-i18next";
 
 export default function AddReview() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function AddReview() {
   const [rating, setRating] = useState<number | null>(0);
   const [headline, setHeadline] = useState<string>("");
   const [review, setReview] = useState<string>("");
+  const { t } = useTranslation();
 
   const getProductDetails = async () => {
     const productscol = collection(db, "products");
@@ -61,12 +63,12 @@ export default function AddReview() {
 
   return (
     <>
-      {loading && <p>Loading</p>}
+      {loading && <p>{t("loading")}</p>}
       {!loading && (
         <>
           <div className="flex flex-col items-center my-20">
             <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
-              Create Review
+              {t("create_review")}
             </p>
             <div className="flex flex-col w-96 h-full bg-white lg:w-2/5">
               <div className="flex px-5 border-b solid border-gray">
@@ -79,7 +81,7 @@ export default function AddReview() {
               <form className="flex px-5 mt-2" onSubmit={onSubmit}>
                 <div className="flex flex-col">
                   <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                    Overall rating
+                    {t("overall_rating")}
                   </p>
                   <Rating
                     className="mb-2.5"
@@ -91,7 +93,7 @@ export default function AddReview() {
                     }}
                   />
                   <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                    Add a headline
+                    {t("add_headline")}
                   </p>
                   <input
                     name="headline"
@@ -103,7 +105,7 @@ export default function AddReview() {
                     required
                   />
                   <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                    Add a written review
+                    {t("add_written_review")}
                   </p>
                   <textarea
                     name="review"
@@ -117,7 +119,7 @@ export default function AddReview() {
                     type="submit"
                     className="flex justify-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
                   >
-                    Submit
+                    {t("submit")}
                   </button>
                 </div>
               </form>

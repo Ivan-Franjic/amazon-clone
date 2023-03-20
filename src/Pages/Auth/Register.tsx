@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
@@ -6,11 +6,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../Common/firebase";
+import { useTranslation } from "react-i18next";
+
 export default function Register() {
   const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { t } = useTranslation();
 
   const register = async (e: any) => {
     e.preventDefault();
@@ -34,17 +37,17 @@ export default function Register() {
       </Link>
 
       <div className="flex flex-col h-fit w-72 p-5 border-x border-y border-solid rounded border-gray">
-        <h1 className="mb-5 font-medium">Register</h1>
+        <h1 className="mb-5 font-medium">{t("register")}</h1>
 
         <form>
-          <h5 className="mb-1">Name</h5>
+          <h5 className="mb-1">{t("name")}</h5>
           <input
             className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <h5 className="mb-1">E-mail</h5>
+          <h5 className="mb-1">{t("email")}</h5>
           <input
             className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
             type="text"
@@ -52,7 +55,7 @@ export default function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <h5 className="mb-1">Password</h5>
+          <h5 className="mb-1">{t("password")}</h5>
           <input
             className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
             type="password"
@@ -64,21 +67,17 @@ export default function Register() {
             onClick={register}
             className="h-12 w-full mt-2.5 bg-black text-sm text-white rounded hover:bg-dgray"
           >
-            Create your Amazon Account
+            {t("create_your_amazon_account")}
           </button>
         </form>
 
-        <p className="mt-3.5 text-xs">
-          By registering you agree to the AMAZON CLONE Conditions of Use & Sale.
-          Please see our Privacy Notice, our Cookies Notice and our
-          Interest-Based Ads Notice.
-        </p>
+        <p className="mt-3.5 text-xs">{t("register_terms")}</p>
         <Link to={"/login"}>
           <button
             className="h-12 w-full mt-2.5 bg-lorange rounded hover:bg-orange"
             type="submit"
           >
-            Sign In
+            {t("sign_in")}
           </button>
         </Link>
       </div>

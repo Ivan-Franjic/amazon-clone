@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
 import { auth } from "../../Common/firebase";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { t } = useTranslation();
 
   const signIn = (e: any) => {
     e.preventDefault();
@@ -31,10 +33,10 @@ export default function Login() {
       </Link>
 
       <div className="flex flex-col h-fit w-72 p-5 border-x border-y border-solid rounded border-gray">
-        <h1 className="mb-5 font-medium">Sign-in</h1>
+        <h1 className="mb-5 font-medium">{t("sign_in")}</h1>
 
         <form>
-          <h5 className="mb-1">E-mail</h5>
+          <h5 className="mb-1">{t("email")}</h5>
           <input
             className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
             type="text"
@@ -42,7 +44,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <h5 className="mb-1">Password</h5>
+          <h5 className="mb-1">{t("password")}</h5>
           <input
             className="h-7 w-full mb-2.5 bg-white text-black border-x border-y border-solid rounded border-black"
             type="password"
@@ -55,18 +57,14 @@ export default function Login() {
             type="submit"
             onClick={signIn}
           >
-            Sign In
+            {t("sign_in")}
           </button>
         </form>
 
-        <p className="mt-3.5 text-xs">
-          By signing-in you agree to the AMAZON CLONE Conditions of Use & Sale.
-          Please see our Privacy Notice, our Cookies Notice and our
-          Interest-Based Ads Notice.
-        </p>
+        <p className="mt-3.5 text-xs">{t("sign_in_terms")}</p>
         <Link to={"/register"}>
           <button className="h-12 w-full mt-2.5 bg-black text-sm text-white rounded hover:bg-dgray">
-            Create your Amazon Account
+            {t("create_your_amazon_account")}
           </button>
         </Link>
       </div>

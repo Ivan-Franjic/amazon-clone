@@ -4,11 +4,12 @@ import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../Common/StateProvider";
 import { actionTypes } from "../../Common/reducer";
+import { useTranslation } from "react-i18next";
 
 export default function ConfirmOrder() {
   const navigate = useNavigate();
   const { state, dispatch } = useGlobalContext();
-
+  const { t } = useTranslation();
   const onSubmit = async (e: any) => {
     e.preventDefault();
     let newDate = new Date();
@@ -43,7 +44,7 @@ export default function ConfirmOrder() {
     <div className="flex flex-col justify-between h-44 p-5 bg-white border-x border-y border-solid border-lgray lg:mx-5 lg:rounded-lg lg:w-full">
       <>
         <p>
-          Subtotal:{" "}
+          {t("subtotal")}:{" "}
           <strong>
             {(Math.round(getBasketTotal(state.basket) * 100) / 100).toFixed(2)}
             {" $"}
@@ -55,7 +56,7 @@ export default function ConfirmOrder() {
         onClick={onSubmit}
         className="h-10 mt-2.5 text-black bg-lorange border-x border-y border-solid rounded hover:bg-orange"
       >
-        Pay
+        {t("pay")}
       </button>
     </div>
   );

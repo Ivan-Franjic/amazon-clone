@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Address from "../../../Components/Address/Address";
 import AddAddress from "../../../Components/Address/AddAddress";
 import { Link } from "react-router-dom";
@@ -7,10 +7,12 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useGlobalContext } from "../../../Common/StateProvider";
 import { actionTypes } from "../../../Common/reducer";
 import { IAddressData } from "../../../Types/Address.type";
+import { useTranslation } from "react-i18next";
 
 export default function Addresses() {
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
   const currentUserId = sessionStorage.getItem("currentUserId");
   const getAddresses = async () => {
     const addressescol = query(
@@ -38,11 +40,11 @@ export default function Addresses() {
 
   return (
     <>
-      {loading && <p>Loading</p>}
+      {loading && <p>{t("loading")}</p>}
       {!loading && (
         <div className="flex flex-col items-center ml-2 mt-2 mb-20 lg:items-start lg:ml-16">
           <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
-            Your Addresses
+            {t("your_addresses")}
           </p>
           <div className="flex flex-col justify-center gap-4 mt-2 lg:flex-row">
             <Link to={"/account/addresses/addaddress"}>

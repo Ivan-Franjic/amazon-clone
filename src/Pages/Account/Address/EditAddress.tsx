@@ -4,11 +4,13 @@ import { db } from "../../../Common/firebase";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { useGlobalContext } from "../../../Common/StateProvider";
 import { actionTypes } from "../../../Common/reducer";
+import { useTranslation } from "react-i18next";
 export default function EditAddress() {
   const navigate = useNavigate();
   const { addressId } = useParams();
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     street: "",
@@ -58,22 +60,20 @@ export default function EditAddress() {
 
   return (
     <>
-      {loading && <p>Loading</p>}
+      {loading && <p>{t("loading")}</p>}
       {!loading && (
         <div className="flex flex-col items-center my-20">
           <p className="flex py-5 font-semibold lg:text-3xl lg:font-normal">
-            Edit Address
+            {t("edit_address")}
           </p>
           <div className="flex flex-col w-11/12 h-full bg-white border border-gray rounded-md lg:w-2/5">
             <p className="flex p-2 text-xs lg:text-base">
-              If you want to edit address associated with your Amazon customer
-              account, you may do so below. Make sure that you click the Save
-              Changes button when you have finished.
+              {t("edit_address_details")}
             </p>
             <form className="flex px-5 mt-2" onSubmit={onSubmit}>
               <div className="flex flex-col">
                 <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                  Name
+                  {t("name")}
                 </p>
                 <input
                   name="name"
@@ -84,7 +84,7 @@ export default function EditAddress() {
                   className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
                 />
                 <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                  Street and house number
+                  {t("street")}
                 </p>
                 <input
                   name="street"
@@ -95,7 +95,7 @@ export default function EditAddress() {
                   className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
                 />
                 <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                  City, postal code
+                  {t("city")}
                 </p>
                 <input
                   name="city"
@@ -106,7 +106,7 @@ export default function EditAddress() {
                   className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
                 />
                 <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                  Country
+                  {t("country")}
                 </p>
                 <input
                   name="country"
@@ -117,7 +117,7 @@ export default function EditAddress() {
                   className="flex text-xs bg-white border rounded-md p-2 tracking-tight text-black mb-2.5 lg:text-sm"
                 />
                 <p className="flex text-xs font-semibold tracking-tight text-black mb-1 lg:text-sm">
-                  Phone number
+                  {t("mobile_number")}
                 </p>
                 <input
                   name="contact"
@@ -131,7 +131,7 @@ export default function EditAddress() {
                   type="submit"
                   className="flex justify-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
                 >
-                  Save
+                  {t("save")}
                 </button>
               </div>
             </form>

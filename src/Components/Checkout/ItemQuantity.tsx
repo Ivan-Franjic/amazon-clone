@@ -1,4 +1,3 @@
-import React from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { IItemQuantityData } from "../../Types/ItemQuantity.type";
 

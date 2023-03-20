@@ -16,11 +16,13 @@ import {
 import { useGlobalContext } from "../Common/StateProvider";
 import { actionTypes } from "../Common/reducer";
 import { IProductData } from "../Types/Product.type";
+import { useTranslation } from "react-i18next";
 
 export default function ProductDetails() {
   const { productCategory, productId } = useParams();
   const { state, dispatch } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
   const [amount, setAmount] = useState(1);
 
   const setDecrease = () => {
@@ -107,7 +109,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      {loading && <p>Loading</p>}
+      {loading && <p>{t("loading")}</p>}
       {!loading && (
         <>
           <div className="flex flex-col lg:flex-row">
@@ -131,7 +133,7 @@ export default function ProductDetails() {
                   readOnly
                 />
                 <p className="text-lblue ml-2">
-                  {state.productDetails.data.rating_total} ratings
+                  {state.productDetails.data.rating_total} {t("ratings")}
                 </p>
               </div>
               <p className="flex p-2 lg:p-5">
@@ -145,12 +147,14 @@ export default function ProductDetails() {
               <p className="hidden text-xl text-bold lg:flex lg:p-5">
                 ${state.productDetails.data.price}
               </p>
-              <p className="hidden text-sm lg:flex lg:ml-5">FREE Returns</p>
+              <p className="hidden text-sm lg:flex lg:ml-5">
+                {t("free_returns")}
+              </p>
               {(() => {
                 if (state.productDetails.data.quantity === 0) {
                   return (
                     <p className="hidden text-sm text-red lg:flex lg:p-5">
-                      Currently not available.
+                      {t("not_available")}
                     </p>
                   );
                 } else if (
@@ -160,7 +164,8 @@ export default function ProductDetails() {
                   return (
                     <>
                       <p className="hidden text-sm text-orange lg:flex lg:p-5">
-                        Only {state.productDetails.data.quantity} available.
+                        {t("only")} {state.productDetails.data.quantity}{" "}
+                        {t("available")}.
                       </p>
                       <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 lg:ml-5">
                         Qty:
@@ -177,7 +182,7 @@ export default function ProductDetails() {
                             addToBasket(state.productDetails.data.id, amount)
                           }
                         >
-                          Add to Basket
+                          {t("add_basket")}
                         </button>
                         <Link
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
@@ -188,7 +193,7 @@ export default function ProductDetails() {
                               addToBasket(state.productDetails.data.id, amount)
                             }
                           >
-                            Buy now
+                            {t("buy_now")}
                           </button>
                         </Link>
                       </div>
@@ -198,7 +203,7 @@ export default function ProductDetails() {
                   return (
                     <>
                       <p className="hidden text-sm text-green lg:flex lg:p-5">
-                        In stock.
+                        {t("stock")}.
                       </p>
                       <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 lg:ml-5">
                         Qty:
@@ -215,7 +220,7 @@ export default function ProductDetails() {
                             addToBasket(state.productDetails.data.id, amount)
                           }
                         >
-                          Add to Basket
+                          {t("add_basket")}
                         </button>
                         <Link
                           className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
@@ -226,7 +231,7 @@ export default function ProductDetails() {
                               addToBasket(state.productDetails.data.id, amount)
                             }
                           >
-                            Buy now
+                            {t("buy_now")}
                           </button>
                         </Link>
                       </div>
@@ -235,18 +240,14 @@ export default function ProductDetails() {
                 }
               })()}
               <div className="hidden lg:flex lg:flex-col lg:mt-2.5">
-                <p className="text-xs p-1">
-                  Return policy: Returnable within 30 days of receipt
-                </p>
-                <p className=" text-xs p-1">
-                  Support: Free Amazon product support included
-                </p>
+                <p className="text-xs p-1">{t("return_policy")}</p>
+                <p className=" text-xs p-1">{t("support")}</p>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-5 my-10 lg:my-32">
             <p className="flex ml-10 text-2xl font-semibold">
-              Products related to this item
+              {t("related_products")}
             </p>
             <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
               {state.relatedProducts[1].map((item: IProductData) => (
@@ -271,7 +272,7 @@ export default function ProductDetails() {
           </div>
           <div className="flex flex-col gap-5 my-10 lg:my-32">
             <p className="flex ml-10 text-2xl font-semibold">
-              Customer reviews
+              {t("customer_reviews")}
             </p>
             <div className="flex flex-col items-center gap-10 ml-4">
               {state.productReviews[1].map((item: any) => (
