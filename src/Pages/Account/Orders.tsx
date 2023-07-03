@@ -44,7 +44,7 @@ export default function Orders() {
     <>
       {loading && <p>{t("loading")}</p>}
       {!loading && (
-        <div className="flex flex-col items-center my-10 gap-4">
+        <div className="flex flex-col items-center mb-96 gap-4">
           <p className="flex lg:py-5 lg:text-3xl">{t("your_orders")}</p>
           {state.orders[1].map((item: IOrderData) => (
             <Order

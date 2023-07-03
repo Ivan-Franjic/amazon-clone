@@ -21,7 +21,7 @@ export default function Basket() {
 
   return (
     <>
-      <div className="flex flex-col p-5 bg-lgray lg:flex lg:flex-row">
+      <div className="flex flex-col p-5 mb-96 bg-lgray lg:flex lg:flex-row">
         <div className="flex flex-col bg-white lg:w-4/5 mb-44">
           <div className="w-full">
             {state.basket.length > 0 ? (

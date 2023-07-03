@@ -9,7 +9,7 @@ export default function Checkout() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col p-5 bg-lgray lg:flex lg:flex-row">
+    <div className="flex flex-col p-5 mb-96 bg-lgray lg:flex lg:flex-row">
       <div className="flex flex-col bg-white lg:w-4/5 mb-44">
         <div className="w-full">
           <h2 className="flex p-5 mx-2.5 text-2xl font-medium">

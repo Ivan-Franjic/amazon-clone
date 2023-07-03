@@ -5,7 +5,7 @@ export default function Account() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mb-96">
       <p className="flex p-5 font-semibold lg:text-3xl lg:font-normal">
         {t("your_account")}
       </p>
