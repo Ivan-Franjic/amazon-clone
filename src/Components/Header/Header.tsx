@@ -94,7 +94,7 @@ export default function Header() {
                   Hello, {t("guest")}
                 </span>
                 <span className="text-sm font-extrabold text-left">
-                  {"Sign In"}
+                  {t("sign_in")}
                 </span>
               </div>
             </Link>

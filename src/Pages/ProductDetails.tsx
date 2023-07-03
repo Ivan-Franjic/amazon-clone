@@ -113,9 +113,9 @@ export default function ProductDetails() {
       {!loading && (
         <>
           <div className="flex flex-col lg:flex-row">
-            <div className="flex p-2 lg:w-2/5 lg:h-2/5 lg:p-5 overflow-hidden">
+            <div className="flex p-2 lg:w-2/5 lg:h-2/5 lg:p-10 overflow-hidden">
               <img
-                className="object-cover hover:scale-110 ease-in duration-500"
+                className="object-cover h-2/5 w-2/5 hover:scale-110 ease-in duration-500"
                 src={state.productDetails.data.image}
                 alt="product image"
               />
