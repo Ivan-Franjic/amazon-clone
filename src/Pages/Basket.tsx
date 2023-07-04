@@ -23,11 +23,18 @@ export default function Basket() {
     <>
       <div className="flex flex-col p-5 mb-96 bg-lgray lg:flex lg:flex-row">
         <div className="flex flex-col bg-white lg:w-4/5 mb-44">
-          <div className="w-full">
+          <div className="flex justify-between w-full">
             {state.basket.length > 0 ? (
+                <>
               <h2 className="flex p-5 mx-2.5 text-2xl font-medium">
                 {t("cart")}
               </h2>
+                <a className="p-5 text-lblue bg-white border-none cursor-pointer hover:underline"
+                    onClick={emptyBasket}
+                >
+                  Empty Basket
+                </a>
+                </>
             ) : (
               <h2 className="flex p-5 text-2xl font-medium">
                 {t("cart_empty")}
@@ -51,12 +58,7 @@ export default function Basket() {
             </div>
           ))}
         </div>
-        {/* <a
-          className="mt-2.5 text-lblue bg-white border-none cursor-pointer hover:underline"
-          onClick={emptyBasket}
-        >
-          empty
-        </a> */}
+
         {state.basket.length > 0 ? (
           <div className="checkout__right">
             <Subtotal />
