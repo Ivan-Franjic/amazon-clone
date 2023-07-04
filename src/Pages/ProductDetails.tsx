@@ -121,7 +121,7 @@ export default function ProductDetails() {
               />
             </div>
             <div className="flex flex-col">
-              <p className="flex p-2 lg:p-5">
+              <p className="flex ml-5 lg:p-5 lg:ml-0">
                 {state.productDetails.data.name}
               </p>
               <div className="flex p-2 lg:p-1 lg:ml-4 lg:border-b lg:border-solid lg:border-gray">
@@ -136,10 +136,10 @@ export default function ProductDetails() {
                   {state.productDetails.data.rating_total} {t("ratings")}
                 </p>
               </div>
-              <p className="flex p-2 lg:p-5">
+              <p className="flex p-1 ml-5 lg:p-5 lg:ml-0">
                 ${state.productDetails.data.price}
               </p>
-              <p className="flex p-2 lg:p-5">
+              <p className="flex p-2 ml-5 lg:p-5 lg:ml-0">
                 {state.productDetails.data.description}
               </p>
             </div>
@@ -167,7 +167,7 @@ export default function ProductDetails() {
                         {t("only")} {state.productDetails.data.quantity}{" "}
                         {t("available")}.
                       </p>
-                      <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 lg:ml-5">
+                      <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 ml-5">
                         Qty:
                         <ItemQuantity
                           amount={amount}
@@ -205,7 +205,7 @@ export default function ProductDetails() {
                       <p className="hidden text-sm text-green lg:flex lg:p-5">
                         {t("stock")}.
                       </p>
-                      <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 lg:ml-5">
+                      <div className="flex mb-40 p-2 lg:mb-2 lg:p-1 ml-5">
                         Qty:
                         <ItemQuantity
                           amount={amount}
@@ -215,7 +215,7 @@ export default function ProductDetails() {
                       </div>
                       <div className="flex flex-col w-full justify-center">
                         <button
-                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
+                          className="h-10 lg:mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
                           onClick={() =>
                             addToBasket(state.productDetails.data.id, amount)
                           }
@@ -223,7 +223,7 @@ export default function ProductDetails() {
                           {t("add_basket")}
                         </button>
                         <Link
-                          className="h-10 mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
+                          className="h-10 lg:mx-2.5 mt-2.5 bg-lorange text-black border-none rounded-3xl hover:bg-orange w-56 lg:w-48"
                           to={`/basket`}
                         >
                           <button
@@ -246,10 +246,10 @@ export default function ProductDetails() {
             </div>
           </div>
           <div className="flex flex-col gap-5 my-10 lg:my-32">
-            <p className="flex ml-10 text-2xl font-semibold">
+            <p className="flex ml-5 lg:ml-10 text-2xl font-semibold">
               {t("related_products")}
             </p>
-            <div className="flex gap-5 h-56 overflow-auto mx-10 lg:h-96 ">
+            <div className="flex gap-5 h-64 overflow-auto mx-5 lg:mx-10 lg:h-96 ">
               {state.relatedProducts[1].map((item: IProductData) => (
                 <Link
                   to={`/productdetails/${item.category}/${item.id}`}
@@ -271,7 +271,7 @@ export default function ProductDetails() {
             </div>
           </div>
           <div className="flex flex-col gap-5 my-10 lg:my-32">
-            <p className="flex ml-10 text-2xl font-semibold">
+            <p className="flex ml-5 lg:ml-10 text-2xl font-semibold">
               {t("customer_reviews")}
             </p>
             <div className="flex flex-col items-center gap-10 ml-4">

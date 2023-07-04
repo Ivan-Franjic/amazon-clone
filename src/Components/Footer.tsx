@@ -16,7 +16,7 @@ export default function Footer() {
       >
         <p className="mt-4">{t("back_to_top")}</p>
       </div>
-      <div className="flex justify-center gap-32 h-80 z-40 text-white bg-lblue">
+      <div className="flex justify-center gap-26 lg:gap-32 h-80 z-40 text-white bg-lblue">
         <p className="mt-10">{t("get_to_know_us")}</p>
         <p className="mt-10">{t("payment_methods")}</p>
         <p className="mt-10">{t("let_us_help_you")}</p>

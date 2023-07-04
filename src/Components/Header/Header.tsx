@@ -1,3 +1,4 @@
+
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ export default function Header() {
     },
   ];
 
-  const changeLanguage = (e: any) => {
+  const changeLanguage = (e:any) => {
     i18next.changeLanguage(e.target.value);
   };
 
@@ -50,6 +51,7 @@ export default function Header() {
 
       <div className="flex justify-evenly">
         <div className="lg:max-w-sm">
+
           <select
             className="w-full p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600"
             onChange={changeLanguage}
@@ -58,7 +60,6 @@ export default function Header() {
               <option
                 key={country_code}
                 value={code}
-                // className={`flag-icon flag-icon-${country_code} mx-2`}
               >
                 {name}
               </option>
@@ -72,7 +73,7 @@ export default function Header() {
                 <span className="text-xs leading-5 text-left">
                   Hello, {state.user.displayName}
                 </span>
-                <span className="text-sm font-extrabold">{t("account")}</span>
+                <span className="hidden text-sm font-extrabold lg:flex">{t("account")}</span>
               </div>
             </Link>
             <Link to="/account/orders">
@@ -114,7 +115,7 @@ export default function Header() {
         <Link to="/basket">
           <div className="flex flex-col h-12 p-1 items-center text-white hover:border-solid hover:border-white hover:border-x hover:border-y lg:flex lg:flex-row">
             <AiOutlineShoppingCart />
-            <span className="text-sm font-extrabold mx-2.5">
+            <span className="text-sm font-extrabold lg:mx-2.5">
               {state.basket?.length} {}
               {t("basket")}
             </span>
