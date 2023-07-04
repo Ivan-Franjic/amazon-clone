@@ -56,7 +56,7 @@ export default function EditName() {
             />
             <button
               type="submit"
-              className="flex justify-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
+              className="flex justify-center items-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
             >
               {t("save_changes")}
             </button>

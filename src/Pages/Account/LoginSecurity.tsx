@@ -24,7 +24,7 @@ export default function LoginSecurity() {
             </p>
           </div>
           <Link to={"/account/login&security/editname"}>
-            <button className="flex justify-center bg-lgray border border-gray rounded-none w-24 h-8 hover:bg-gray">
+            <button className="flex justify-center items-center bg-lgray border border-gray rounded-none w-24 h-8 lg:mt-1 hover:bg-gray">
               {t("edit")}
             </button>
           </Link>
@@ -39,7 +39,7 @@ export default function LoginSecurity() {
             </p>
           </div>
           <Link to={"/account/login&security/editemail"}>
-            <button className="flex justify-center bg-lgray border border-gray rounded-none w-24 h-8 hover:bg-gray">
+            <button className="flex justify-center items-center bg-lgray border border-gray rounded-none w-24 h-8 lg:mt-1 hover:bg-gray">
               {t("edit")}
             </button>
           </Link>
@@ -54,7 +54,7 @@ export default function LoginSecurity() {
             </p>
           </div>
           <Link to={"/account/login&security/editcontact"}>
-            <button className="flex justify-center bg-lgray border border-gray rounded-none w-24 h-8 hover:bg-gray">
+            <button className="flex justify-center items-center bg-lgray border border-gray rounded-none w-24 h-8 lg:mt-1 hover:bg-gray">
               {t("edit")}
             </button>
           </Link>
@@ -69,14 +69,14 @@ export default function LoginSecurity() {
             </p>
           </div>
           <Link to={"/account/login&security/editpassword"}>
-            <button className="flex justify-center bg-lgray border border-gray rounded-none w-24 h-8 hover:bg-gray">
+            <button className="flex justify-center items-center bg-lgray border border-gray rounded-none w-24 h-8 lg:mt-1 hover:bg-gray">
               {t("edit")}
             </button>
           </Link>
         </div>
       </div>
       <Link to={"/account"}>
-        <button className="flex justify-center bg-lorange mt-6 border border-black rounded-none w-16 h-10 hover:bg-orange">
+        <button className="flex justify-center items-center bg-lorange mt-6 border border-black rounded-none w-16 h-10 hover:bg-orange">
           {t("done")}
         </button>
       </Link>

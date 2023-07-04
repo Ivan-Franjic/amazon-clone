@@ -29,14 +29,14 @@ export default function DeleteAddress() {
             <div className="flex flex-col">
               <button
                 type="submit"
-                className="flex justify-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
+                className="flex justify-center items-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
               >
                 {t("delete")}
               </button>
               <button
                 type="button"
                 onClick={onCancel}
-                className="flex justify-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
+                className="flex justify-center items-center bg-lorange my-6 border border-black rounded-none w-36 h-10 hover:bg-orange"
               >
                 {t("cancel")}
               </button>
